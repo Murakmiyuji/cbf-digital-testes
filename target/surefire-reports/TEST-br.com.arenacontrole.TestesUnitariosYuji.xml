@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.arenacontrole.TestesUnitariosComplementares" time="0.179" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.arenacontrole.TestesUnitariosYuji" time="0.143" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,17 +59,22 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testCT21_BloqueioDePlacarNegativo" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.067"/>
-  <testcase name="testCT20_BloqueioRemocaoTime" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.003"/>
-  <testcase name="testCT35_BloqueioTimesImpares3Times" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT24_ValidacaoCadastroNomeEmBranco" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.001"/>
-  <testcase name="testCT23_BloqueioTimesDuplicados" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT37_PermissaoTimesPares" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.001"/>
-  <testcase name="testCT14_DesempatePorSaldoDeGols" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.005"/>
-  <testcase name="testCT12_OrdenacaoPorPontos" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT32_CalculoTotalGolsAcumulo" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT31_CalculoTotalGolsPartidaUnica" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT28_ValidacaoAbreviaturaComEspaco" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT22_BloqueioCartaoNegativo" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
-  <testcase name="testCT19_RemocaoTimeComSucesso" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002"/>
+  <testcase name="testCT24_ValidacaoCadastroNomeEmBranco" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.036"/>
+  <testcase name="testValidacaoCadastroAbreviaturaVazia" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.008"/>
+  <testcase name="testCT23_BloqueioTimesDuplicados" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.01"/>
+  <testcase name="testCT21_BloqueioPlacarNegativoGolsPro" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004"/>
+  <testcase name="testCT25_BloqueioPlacarParcialComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testCT27_BloqueioEntradaNaoNumericaComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testCadastroValidoSucesso" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testRegistroValidoPartida" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testCT29_BloqueioCadastroNoMeioComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testCT30_BloqueioCartoesMultiplosFaltandoComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
+  <testcase name="testBloqueioGolsContraNegativos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
+  <testcase name="testCT28_ValidacaoCadastroAbreviaturaComEspaco" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004"/>
+  <testcase name="testCT26_BloqueioPlacarParcialCartoesComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testCT22_BloqueioPlacarNegativoCartoesAmarelos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testValidacaoCadastroNomeApenasEspacos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
+  <testcase name="testBloqueioCartoesVermelhosNegativos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
+  <testcase name="testValidacaoCadastroAbreviaturaNull" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
+  <testcase name="testValidacaoCadastroNomeNull" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
 </testsuite>

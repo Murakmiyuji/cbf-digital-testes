@@ -1,8 +1,9 @@
 package br.com.arenacontrole;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Testes Unitários - Yuji Faruk Murakami Feles
@@ -18,10 +19,6 @@ public class TestesUnitariosYuji {
 
     private Campeonato campeonato;
 
-    @Before
-    public void setUp() {
-        campeonato = new Campeonato();
-    }
 
     // ========== RF09: Bloqueio de Placar Negativo ==========
     // RT09: O sistema deve bloquear placares negativos
@@ -35,27 +32,30 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      * Pós-condições: A partida não é registrada; atributos permanecem inalterados
      */
-    @Test(expected = IllegalArgumentException.class)
+    @BeforeEach
+    public void setUpBeforeEach() {
+        campeonato = new Campeonato();
+    }
+
+    @Test
+    @DisplayName("Test")
     public void testCT21_BloqueioPlacarNegativoGolsPro() {
         // Arrange
         campeonato.cadastrarTime("Time A", "TA");
         campeonato.cadastrarTime("Time B", "TB");
 
         // Act & Assert
-        try {
-            campeonato.registrarResultado("Time A", "Time B", -1, 3, 0, 0, 0, 0);
-            fail("Deveria lançar IllegalArgumentException para gols negativos");
-        } catch (IllegalArgumentException e) {
-            assertTrue(e.getMessage().contains("negativos") ||
-                    e.getMessage().contains("não negativo"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time A", "Time B", -1, 3, 0, 0, 0, 0)
+        );
 
-            // Verificar que os atributos permanecem inalterados
-            Time timeA = campeonato.buscarTime("Time A");
-            assertEquals(0, timeA.getPontos());
-            assertEquals(0, timeA.getJogos());
+        assertTrue(e.getMessage().toLowerCase().contains("negativ") ||
+                   e.getMessage().toLowerCase().contains("não negativo"));
 
-            throw e;
-        }
+        // Verificar que os atributos permanecem inalterados
+        Time timeA = campeonato.buscarTime("Time A");
+        assertEquals(0, timeA.getPontos());
+        assertEquals(0, timeA.getJogos());
     }
 
     /**
@@ -67,27 +67,25 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      * Pós-condições: A partida não é registrada; atributos permanecem inalterados
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCT22_BloqueioPlacarNegativoCartoesAmarelos() {
         // Arrange
         campeonato.cadastrarTime("Time C", "TC");
         campeonato.cadastrarTime("Time D", "TD");
 
         // Act & Assert
-        try {
-            campeonato.registrarResultado("Time C", "Time D", 1, 1, -2, 0, 0, 0);
-            fail("Deveria lançar IllegalArgumentException para cartões negativos");
-        } catch (IllegalArgumentException e) {
-            assertTrue(e.getMessage().contains("negativos") ||
-                    e.getMessage().contains("Cartões"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time C", "Time D", 1, 1, -2, 0, 0, 0)
+        );
 
-            // Verificar que os atributos permanecem inalterados
-            Time timeC = campeonato.buscarTime("Time C");
-            assertEquals(0, timeC.getPontos());
-            assertEquals(0, timeC.getJogos());
+        assertTrue(e.getMessage().toLowerCase().contains("negativ") ||
+                   e.getMessage().toLowerCase().contains("cartões") ||
+                   e.getMessage().toLowerCase().contains("cartoes"));
 
-            throw e;
-        }
+        // Verificar que os atributos permanecem inalterados
+        Time timeC = campeonato.buscarTime("Time C");
+        assertEquals(0, timeC.getPontos());
+        assertEquals(0, timeC.getJogos());
     }
 
     // ========== RF10: Bloqueio de Times Duplicados em Partida ==========
@@ -102,26 +100,24 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      * Pós-condições: A partida não é registrada; atributos permanecem inalterados
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCT23_BloqueioTimesDuplicados() {
         // Arrange
         campeonato.cadastrarTime("Time E", "TE");
 
         // Act & Assert
-        try {
-            campeonato.registrarResultado("Time E", "Time E", 2, 2, 0, 0, 0, 0);
-            fail("Deveria lançar IllegalArgumentException para times duplicados");
-        } catch (IllegalArgumentException e) {
-            assertTrue(e.getMessage().contains("si mesmo") ||
-                    e.getMessage().contains("mesmo time"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time E", "Time E", 2, 2, 0, 0, 0, 0)
+        );
 
-            // Verificar que os atributos permanecem inalterados
-            Time timeE = campeonato.buscarTime("Time E");
-            assertEquals(0, timeE.getPontos());
-            assertEquals(0, timeE.getJogos());
+        assertTrue(e.getMessage().toLowerCase().contains("si mesmo") ||
+                   e.getMessage().toLowerCase().contains("mesmo time") ||
+                   e.getMessage().toLowerCase().contains("não pode"));
 
-            throw e;
-        }
+        // Verificar que os atributos permanecem inalterados
+        Time timeE = campeonato.buscarTime("Time E");
+        assertEquals(0, timeE.getPontos());
+        assertEquals(0, timeE.getJogos());
     }
 
     // ========== RF11: Validação de Cadastro de Times (Nome Vazio) ==========
@@ -136,38 +132,33 @@ public class TestesUnitariosYuji {
      * Prioridade: Média
      * Pós-condições: O novo time não é criado
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCT24_ValidacaoCadastroNomeEmBranco() {
         // Act & Assert
-        try {
-            campeonato.cadastrarTime("", "SEM");
-            fail("Deveria lançar IllegalArgumentException para nome vazio");
-        } catch (IllegalArgumentException e) {
-            assertTrue(e.getMessage().contains("obrigatório") ||
-                    e.getMessage().contains("vazio"));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.cadastrarTime("", "SEM")
+        );
 
-            // Verificar que nenhum time foi criado
-            assertEquals(0, campeonato.getNumeroTimes());
+        assertTrue(e.getMessage().toLowerCase().contains("obrigat") ||
+                   e.getMessage().toLowerCase().contains("vazio"));
 
-            throw e;
-        }
+        // Verificar que nenhum time foi criado
+        assertEquals(0, campeonato.getNumeroTimes());
     }
 
     /**
      * Teste adicional: Nome com apenas espaços
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidacaoCadastroNomeApenasEspacos() {
         // Act & Assert
-        try {
-            campeonato.cadastrarTime("   ", "SEM");
-            fail("Deveria lançar IllegalArgumentException para nome com apenas espaços");
-        } catch (IllegalArgumentException e) {
-            assertTrue(e.getMessage().contains("obrigatório") ||
-                    e.getMessage().contains("vazio"));
-            assertEquals(0, campeonato.getNumeroTimes());
-            throw e;
-        }
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.cadastrarTime("   ", "SEM")
+        );
+
+        assertTrue(e.getMessage().toLowerCase().contains("obrigat") ||
+                   e.getMessage().toLowerCase().contains("vazio"));
+        assertEquals(0, campeonato.getNumeroTimes());
     }
 
     // ========== RF12: Bloqueio de Placar Parcial (Campo Vazio) ==========
@@ -192,7 +183,7 @@ public class TestesUnitariosYuji {
         // 
         // No modelo de domínio Java, usamos tipos primitivos (int)
         // que não aceitam null, garantindo que sempre teremos valores válidos.
-        assertTrue("Validação de campos vazios deve ser feita na camada de apresentação", true);
+        assertTrue(true, "Validação de campos vazios deve ser feita na camada de apresentação");
     }
 
     /**
@@ -206,7 +197,7 @@ public class TestesUnitariosYuji {
     public void testCT26_BloqueioPlacarParcialCartoesComentario() {
         // Similar ao CT25, a validação de campos obrigatórios deve ser
         // implementada na camada de apresentação.
-        assertTrue("Validação de campos obrigatórios deve ser feita na camada de apresentação", true);
+        assertTrue(true, "Validação de campos obrigatórios deve ser feita na camada de apresentação");
     }
 
     /**
@@ -222,7 +213,7 @@ public class TestesUnitariosYuji {
     @Test
     public void testCT27_BloqueioEntradaNaoNumericaComentario() {
         // Java com tipos primitivos previne este erro em tempo de compilação
-        assertTrue("Java com tipos primitivos previne entradas não numéricas", true);
+        assertTrue(true, "Java com tipos primitivos previne entradas não numéricas");
     }
 
     /**
@@ -234,18 +225,17 @@ public class TestesUnitariosYuji {
      * Prioridade: Média
      * Pós-condições: O novo time não é criado
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCT28_ValidacaoCadastroAbreviaturaComEspaco() {
         // Act & Assert
-        try {
-            campeonato.cadastrarTime("Time Validação", "TV A");
-            fail("Deveria lançar IllegalArgumentException para abreviatura com espaço");
-        } catch (IllegalArgumentException e) {
-            assertTrue(e.getMessage().contains("espaço") ||
-                    e.getMessage().contains("abreviatura"));
-            assertEquals(0, campeonato.getNumeroTimes());
-            throw e;
-        }
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.cadastrarTime("Time Validação", "TV A")
+        );
+
+        assertTrue(e.getMessage().toLowerCase().contains("espaço") ||
+                   e.getMessage().toLowerCase().contains("abreviat") ||
+                   e.getMessage().toLowerCase().contains("espaço"));
+        assertEquals(0, campeonato.getNumeroTimes());
     }
 
     /**
@@ -270,7 +260,7 @@ public class TestesUnitariosYuji {
         // Esta seria uma melhoria futura (RN04 do plano de testes)
 
         // Por enquanto, o sistema permite adicionar times a qualquer momento
-        assertTrue("Bloqueio de cadastro após início - funcionalidade futura", true);
+        assertTrue(true, "Bloqueio de cadastro após início - funcionalidade futura");
     }
 
     /**
@@ -285,7 +275,7 @@ public class TestesUnitariosYuji {
      */
     @Test
     public void testCT30_BloqueioCartoesMultiplosFaltandoComentario() {
-        assertTrue("Validação de múltiplos campos deve ser feita na camada de apresentação", true);
+        assertTrue(true, "Validação de múltiplos campos deve ser feita na camada de apresentação");
     }
 
     // ========== Testes Adicionais de Validação ==========
@@ -293,51 +283,71 @@ public class TestesUnitariosYuji {
     /**
      * Teste adicional: Verificar que cartões vermelhos negativos são bloqueados
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testBloqueioCartoesVermelhosNegativos() {
         // Arrange
         campeonato.cadastrarTime("Time F", "TF");
         campeonato.cadastrarTime("Time G", "TG");
 
         // Act & Assert
-        campeonato.registrarResultado("Time F", "Time G", 1, 1, 0, -1, 0, 0);
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time F", "Time G", 1, 1, 0, -1, 0, 0)
+        );
+
+        assertTrue(e.getMessage().toLowerCase().contains("negativ") ||
+                   e.getMessage().toLowerCase().contains("cartoes") ||
+                   e.getMessage().toLowerCase().contains("cartões"));
     }
 
     /**
      * Teste adicional: Verificar que gols contra negativos são bloqueados
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testBloqueioGolsContraNegativos() {
         // Arrange
         campeonato.cadastrarTime("Time H", "TH");
         campeonato.cadastrarTime("Time I", "TI");
 
         // Act & Assert
-        campeonato.registrarResultado("Time H", "Time I", 2, -1, 0, 0, 0, 0);
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time H", "Time I", 2, -1, 0, 0, 0, 0)
+        );
+
+        assertTrue(e.getMessage().toLowerCase().contains("negativ") ||
+                   e.getMessage().toLowerCase().contains("gols") );
     }
 
     /**
      * Teste adicional: Verificar cadastro com nome null
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidacaoCadastroNomeNull() {
-        campeonato.cadastrarTime(null, "TST");
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.cadastrarTime(null, "TST")
+        );
+        assertTrue(e.getMessage().toLowerCase().contains("obrigat") || e.getMessage().toLowerCase().contains("nome"));
     }
 
     /**
      * Teste adicional: Verificar cadastro com abreviatura null
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidacaoCadastroAbreviaturaNull() {
-        campeonato.cadastrarTime("Time Teste", null);
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.cadastrarTime("Time Teste", null)
+        );
+        assertTrue(e.getMessage().toLowerCase().contains("abreviat") || e.getMessage().toLowerCase().contains("nã"));
     }
 
     /**
      * Teste adicional: Verificar cadastro com abreviatura vazia
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidacaoCadastroAbreviaturaVazia() {
-        campeonato.cadastrarTime("Time Teste", "");
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.cadastrarTime("Time Teste", "")
+        );
+        assertTrue(e.getMessage().toLowerCase().contains("abreviat") || e.getMessage().toLowerCase().contains("espaço") || e.getMessage().toLowerCase().contains("não"));
     }
 
     /**
