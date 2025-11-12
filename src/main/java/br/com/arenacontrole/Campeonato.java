@@ -171,6 +171,15 @@ public class Campeonato {
             .orElse(null);
     }
 
+    // RF05/CT11 – Exibição da Tabela (somente leitura)
+    public List<Classificacao> exibirTabelaClassificacao() {
+        return obterTabelaClassificacao()
+                .stream()
+                .map(Classificacao::new)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+
     public List<Time> getTimes() {
         return new ArrayList<>(times);
     }

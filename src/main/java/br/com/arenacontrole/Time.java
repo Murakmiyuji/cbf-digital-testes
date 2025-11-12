@@ -1,5 +1,8 @@
 package br.com.arenacontrole;
 
+import static java.lang.String.format;
+
+
 /**
  * Representa um time no campeonato.
  * Baseado nas regras de negócio RN01-RN16 do Plano de Testes CBF Digital.
@@ -109,7 +112,7 @@ public class Time {
 
     @Override
     public String toString() {
-        return String.format("%s (%s) - PG:%d J:%d V:%d E:%d D:%d GP:%d GC:%d SG:%d CA:%d CV:%d", 
+        return format("%s (%s) - PG:%d J:%d V:%d E:%d D:%d GP:%d GC:%d SG:%d CA:%d CV:%d",
             nome, abreviacao, pontos, jogos, vitorias, empates, derrotas, 
             golsPro, golsContra, saldoGols, cartoesAmarelos, cartoesVermelhos);
     }
