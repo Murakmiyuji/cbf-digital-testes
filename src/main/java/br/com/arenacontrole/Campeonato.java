@@ -2,6 +2,10 @@ package br.com.arenacontrole;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Gerencia um campeonato de pontos corridos.
@@ -179,6 +183,9 @@ public class Campeonato {
                 .collect(java.util.stream.Collectors.toList());
     }
 
+    public List<Time> ordenarTabela() {
+        return obterTabelaClassificacao();
+    }
 
     public List<Time> getTimes() {
         return new ArrayList<>(times);

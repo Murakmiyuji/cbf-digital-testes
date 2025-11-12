@@ -54,4 +54,42 @@ public class TestesUnitariosManuela {
         assertEquals(0,   segundo.getCA());
         assertEquals(0,   segundo.getCV());
     }
+
+    @Test
+    @DisplayName("CT12: Ordenação por Pontos (Prioridade Máxima)")
+    void testCT12_OrdenacaoPorPontos() {
+        // Pré-condição: cadastrar times e configurar pontos via partidas
+        Campeonato campeonato = new Campeonato();
+        campeonato.cadastrarTime("Time A", "A"); // A terá 3 pontos
+        campeonato.cadastrarTime("Time B", "B"); // B terá 1 ponto
+        campeonato.cadastrarTime("Time X", "X"); // adversário de A
+        campeonato.cadastrarTime("Time Y", "Y"); // adversário de B
+
+        // Ação para gerar os pontos:
+        // Time A vence Time X -> +3 pontos para A
+        campeonato.registrarResultado("Time A", "Time X", 1, 0, 0, 0, 0, 0);
+        // Time B empata com Time Y -> +1 ponto para B
+        campeonato.registrarResultado("Time B", "Time Y", 0, 0, 0, 0, 0, 0);
+
+        // Ação: ordenar a tabela
+        List<Time> ordenada = campeonato.ordenarTabela();
+
+        // Resultado Esperado: Time A (PG=3) vem antes do Time B (PG=1)
+        int idxA = indexOf(ordenada, "Time A");
+        int idxB = indexOf(ordenada, "Time B");
+
+        assertTrue(idxA >= 0, "Time A deve existir na tabela");
+        assertTrue(idxB >= 0, "Time B deve existir na tabela");
+        assertTrue(idxA < idxB, "Time A (3 pts) deve aparecer acima do Time B (1 pt)");
+    }
+    private int indexOf(List<Time> lista, String nome) {
+        int i = 0;
+        for (Time t : lista) {
+            if (t.getNome().equalsIgnoreCase(nome)) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
 }
