@@ -92,4 +92,40 @@ public class TestesUnitariosManuela {
         }
         return -1;
     }
+    
+    @Test
+    @DisplayName("CT13: Desempate por Vitórias (1º Critério)")
+    void testCT13_DesempatePorVitorias() {
+        // Pré-condição: cadastrar times
+        Campeonato campeonato = new Campeonato();
+        campeonato.cadastrarTime("Time C", "C"); // terá V=2 e 6 pts
+        campeonato.cadastrarTime("Time D", "D"); // terá V=1 e 6 pts
+        campeonato.cadastrarTime("O1", "O1");
+        campeonato.cadastrarTime("O2", "O2");
+        campeonato.cadastrarTime("O3", "O3");
+        campeonato.cadastrarTime("O4", "O4");
+
+        // Construir pontos para empatar em PG, mas diferenciar por Vitórias:
+        // Time C: 2 vitórias (vs O1, O2) e 1 derrota (vs O3) -> 6 pts, V=2
+        campeonato.registrarResultado("Time C", "O1", 1, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time C", "O2", 1, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time C", "O3", 0, 1, 0, 0, 0, 0);
+
+        // Time D: 1 vitória (vs O1) e 3 empates (vs O2, O3, O4) -> 6 pts, V=1
+        campeonato.registrarResultado("Time D", "O1", 1, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time D", "O2", 0, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time D", "O3", 0, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time D", "O4", 0, 0, 0, 0, 0, 0);
+
+        // Ação: ordenar a tabela
+        List<Time> ordenada = campeonato.ordenarTabela();
+
+        // Resultado Esperado: Time C (mesmos pontos, mais vitórias) acima de Time D
+        int idxC = indexOf(ordenada, "Time C");
+        int idxD = indexOf(ordenada, "Time D");
+
+        assertTrue(idxC >= 0, "Time C deve existir na tabela");
+        assertTrue(idxD >= 0, "Time D deve existir na tabela");
+        assertTrue(idxC < idxD, "Time C (V=2) deve aparecer acima do Time D (V=1) quando pontos são iguais");
+    }
 }
