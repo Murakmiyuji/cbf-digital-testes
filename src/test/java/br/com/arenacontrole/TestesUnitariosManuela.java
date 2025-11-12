@@ -92,7 +92,7 @@ public class TestesUnitariosManuela {
         }
         return -1;
     }
-    
+
     @Test
     @DisplayName("CT13: Desempate por Vitórias (1º Critério)")
     void testCT13_DesempatePorVitorias() {
@@ -127,5 +127,38 @@ public class TestesUnitariosManuela {
         assertTrue(idxC >= 0, "Time C deve existir na tabela");
         assertTrue(idxD >= 0, "Time D deve existir na tabela");
         assertTrue(idxC < idxD, "Time C (V=2) deve aparecer acima do Time D (V=1) quando pontos são iguais");
+    }
+    
+    @Test
+    @DisplayName("CT14: Desempate por Saldo de Gols (2º Critério)")
+    void testCT14_DesempatePorSaldoDeGols() {
+        // Pré-condição: cadastrar times
+        Campeonato campeonato = new Campeonato();
+        campeonato.cadastrarTime("Time E", "E"); // SG = 4
+        campeonato.cadastrarTime("Time F", "F"); // SG = 2
+        campeonato.cadastrarTime("O1", "O1");
+        campeonato.cadastrarTime("O2", "O2");
+        campeonato.cadastrarTime("O3", "O3");
+        campeonato.cadastrarTime("O4", "O4");
+
+        // Construir cenário com MESMOS pontos e MESMAS vitórias, mas SG diferente:
+        // Time E: 1 vitória (4x0) + 1 empate (0x0) -> PG=4, V=1, SG=+4
+        campeonato.registrarResultado("Time E", "O1", 4, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time E", "O2", 0, 0, 0, 0, 0, 0);
+
+        // Time F: 1 vitória (2x0) + 1 empate (0x0) -> PG=4, V=1, SG=+2
+        campeonato.registrarResultado("Time F", "O3", 2, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time F", "O4", 0, 0, 0, 0, 0, 0);
+
+        // Ação: ordenar a tabela
+        List<Time> ordenada = campeonato.ordenarTabela();
+
+        // Resultado Esperado: Time E (SG=4) acima de Time F (SG=2) com pontos e vitórias iguais
+        int idxE = indexOf(ordenada, "Time E");
+        int idxF = indexOf(ordenada, "Time F");
+
+        assertTrue(idxE >= 0, "Time E deve existir na tabela");
+        assertTrue(idxF >= 0, "Time F deve existir na tabela");
+        assertTrue(idxE < idxF, "Time E (SG=4) deve aparecer acima do Time F (SG=2) com PG e V iguais");
     }
 }
