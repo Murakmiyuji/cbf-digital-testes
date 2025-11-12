@@ -128,7 +128,7 @@ public class TestesUnitariosManuela {
         assertTrue(idxD >= 0, "Time D deve existir na tabela");
         assertTrue(idxC < idxD, "Time C (V=2) deve aparecer acima do Time D (V=1) quando pontos são iguais");
     }
-    
+
     @Test
     @DisplayName("CT14: Desempate por Saldo de Gols (2º Critério)")
     void testCT14_DesempatePorSaldoDeGols() {
@@ -160,5 +160,38 @@ public class TestesUnitariosManuela {
         assertTrue(idxE >= 0, "Time E deve existir na tabela");
         assertTrue(idxF >= 0, "Time F deve existir na tabela");
         assertTrue(idxE < idxF, "Time E (SG=4) deve aparecer acima do Time F (SG=2) com PG e V iguais");
+    }
+    @Test
+    @DisplayName("CT15: Desempate por Gols Pró (3º Critério)")
+    void testCT15_DesempatePorGolsPro() {
+        // Pré-condição: cadastrar times
+        Campeonato campeonato = new Campeonato();
+        campeonato.cadastrarTime("Time G", "G"); // GP = 10
+        campeonato.cadastrarTime("Time H", "H"); // GP = 8
+        campeonato.cadastrarTime("O1", "O1");
+        campeonato.cadastrarTime("O2", "O2");
+        campeonato.cadastrarTime("O3", "O3");
+        campeonato.cadastrarTime("O4", "O4");
+
+        // Construir cenário com MESMOS pontos (4) e MESMAS vitórias (1),
+        // MESMO saldo (SG=+2), mas GP diferente (G=10, H=8):
+        // Time G: vitória 6x4 (+3 pts, SG +2) + empate 4x4 (+1 pt, SG 0) => PG=4, V=1, SG=+2, GP=10
+        campeonato.registrarResultado("Time G", "O1", 6, 4, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time G", "O2", 4, 4, 0, 0, 0, 0);
+
+        // Time H: vitória 5x3 (+3 pts, SG +2) + empate 3x3 (+1 pt, SG 0) => PG=4, V=1, SG=+2, GP=8
+        campeonato.registrarResultado("Time H", "O3", 5, 3, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time H", "O4", 3, 3, 0, 0, 0, 0);
+
+        // Ação: ordenar a tabela
+        List<Time> ordenada = campeonato.ordenarTabela();
+
+        // Resultado Esperado: Time G (GP=10) acima de Time H (GP=8) com PG, V e SG iguais
+        int idxG = indexOf(ordenada, "Time G");
+        int idxH = indexOf(ordenada, "Time H");
+
+        assertTrue(idxG >= 0, "Time G deve existir na tabela");
+        assertTrue(idxH >= 0, "Time H deve existir na tabela");
+        assertTrue(idxG < idxH, "Time G (GP=10) deve aparecer acima do Time H (GP=8) com PG, V e SG iguais");
     }
 }
