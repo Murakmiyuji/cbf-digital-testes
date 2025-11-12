@@ -194,4 +194,40 @@ public class TestesUnitariosManuela {
         assertTrue(idxH >= 0, "Time H deve existir na tabela");
         assertTrue(idxG < idxH, "Time G (GP=10) deve aparecer acima do Time H (GP=8) com PG, V e SG iguais");
     }
+    
+    @Test
+    @DisplayName("CT16: Desempate por Cartões (4º e 5º Critérios)")
+    void testCT16_DesempatePorCartoes() {
+        // Pré-condição: cadastrar times
+        Campeonato campeonato = new Campeonato();
+        campeonato.cadastrarTime("Time J", "J"); // CV = 0
+        campeonato.cadastrarTime("Time I", "I"); // CV = 1
+        campeonato.cadastrarTime("O1", "O1");
+        campeonato.cadastrarTime("O2", "O2");
+        campeonato.cadastrarTime("O3", "O3");
+        campeonato.cadastrarTime("O4", "O4");
+
+        // Construir cenário com MESMOS PG, V, SG e GP, e MESMOS CA,
+        // mas CV diferente (J=0, I=1) para forçar o 4º critério (Menor CV)
+        // Time J: vitória 2x0 (+3) + empate 0x0 (+1) => PG=4, V=1, SG=+2, GP=2, CA=0, CV=0
+        campeonato.registrarResultado("Time J", "O1", 2, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time J", "O2", 0, 0, 0, 0, 0, 0);
+
+        // Time I: vitória 2x0 (+3) + empate 0x0 (+1) => PG=4, V=1, SG=+2, GP=2, CA=0, CV=1
+        // Adicionamos 1 cartão vermelho ao I no empate para diferenciar por CV
+        campeonato.registrarResultado("Time I", "O3", 2, 0, 0, 0, 0, 0);
+        campeonato.registrarResultado("Time I", "O4", 0, 0, 0, 1, 0, 0); // cvM=1 para Time I
+
+        // Ação: ordenar a tabela
+        List<Time> ordenada = campeonato.ordenarTabela();
+
+        // Resultado Esperado: Time J (CV=0) acima de Time I (CV=1),
+        // mantendo PG, V, SG, GP e CA iguais
+        int idxJ = indexOf(ordenada, "Time J");
+        int idxI = indexOf(ordenada, "Time I");
+
+        assertTrue(idxJ >= 0, "Time J deve existir na tabela");
+        assertTrue(idxI >= 0, "Time I deve existir na tabela");
+        assertTrue(idxJ < idxI, "Time J (CV=0) deve aparecer acima do Time I (CV=1)");
+    }
 }
