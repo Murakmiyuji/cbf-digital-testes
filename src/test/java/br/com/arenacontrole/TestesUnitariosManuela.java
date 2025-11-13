@@ -281,5 +281,19 @@ public class TestesUnitariosManuela {
         assertEquals(1, campeonato.obterAtributo("C", "PG"));
     }
 
+    @Test
+    @DisplayName("CT19: Remoção de Time com Sucesso")
+    void testCT19_RemocaoTimeComSucesso() {
+        // Pré-condição: Time G cadastrado, sem jogos
+        campeonato.cadastrarTime("Time G", "G");
 
+        // Ação: remover time G
+        boolean removido = campeonato.removerTime("Time G");
+
+        // Resultado esperado:
+        // - Metodo retorna true
+        // - Time G não é mais encontrado na lista
+        assertTrue(removido);
+        assertNull(campeonato.buscarTime("Time G"));
+    }
 }
