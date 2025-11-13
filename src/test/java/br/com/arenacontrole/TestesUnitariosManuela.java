@@ -296,4 +296,28 @@ public class TestesUnitariosManuela {
         assertTrue(removido);
         assertNull(campeonato.buscarTime("Time G"));
     }
+
+    @Test
+    @DisplayName("CT20: Bloqueio de Remoção de Time com Partidas Registradas")
+    void testCT20_BloqueioRemocaoTimeComPartidas() {
+        // Pré-condição: Time H cadastrado e com pelo menos 1 jogo
+        campeonato.cadastrarTime("Time H", "H");
+        campeonato.cadastrarTime("Time I", "I");
+
+        // Registrar uma partida: H 1x0 I
+        campeonato.registrarResultado("Time H", "Time I", 1, 0, 0, 0, 0, 0);
+
+        // Ação: tentar remover o Time H
+        boolean removido = campeonato.removerTime("Time H");
+
+        // Resultado esperado:
+        // - Método retorna false (não remove)
+        // - Time H continua existindo
+        assertFalse(removido);
+        Time timeH = campeonato.buscarTime("Time H");
+        assertNotNull(timeH);
+        // opcional: garante que ele continua com jogos
+        assertTrue(timeH.getJogos() > 0);
+    }
+
 }

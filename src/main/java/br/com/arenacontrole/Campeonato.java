@@ -53,7 +53,8 @@ public class Campeonato {
         }
 
         if (time.getJogos() > 0) {
-            throw new IllegalStateException("Não é possível remover time com partidas registradas");
+            System.out.println("Não é possível remover time com partidas registradas");
+            return false;
         }
 
         return times.remove(time);

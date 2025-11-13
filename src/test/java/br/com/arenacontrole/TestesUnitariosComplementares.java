@@ -99,12 +99,15 @@ public class TestesUnitariosComplementares {
         campeonato.registrarResultado("Time H", "Time I", 1, 0, 0, 0, 0, 0);
         
         // Tentar remover time com histórico
-        Exception exception = assertThrows(IllegalStateException.class, () -> {
-            campeonato.removerTime("Time H");
-        });
+        boolean removido = campeonato.removerTime("Time H");
         
-        // Resultado Esperado: Erro
-        assertTrue(exception.getMessage().contains("Não é possível remover time com partidas registradas"));
+        // Resultado Esperado: falha na remoção (retorna false)
+        assertFalse(removido);
+
+        // E o time H continua existindo com histórico
+        Time timeH = campeonato.buscarTime("Time H");
+        assertNotNull(timeH);
+        assertTrue(timeH.getJogos() > 0);
     }
 
     // ==================== RF09: Bloqueio de Placar Negativo ====================
