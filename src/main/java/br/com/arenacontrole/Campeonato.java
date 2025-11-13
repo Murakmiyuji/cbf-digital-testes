@@ -3,7 +3,6 @@ package br.com.arenacontrole;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -15,6 +14,7 @@ public class Campeonato {
     private List<Time> times;
     private boolean tabelaGerada;
     private int totalGols;
+    private final List<Partida> partidas = new ArrayList<>();
 
     public Campeonato() {
         this.times = new ArrayList<>();
@@ -84,24 +84,76 @@ public class Campeonato {
             throw new IllegalArgumentException("Um ou ambos os times não encontrados");
         }
 
-        // Atualizar estatísticas dos times baseado no resultado
-        if (golsA > golsB) {
-            // Time A venceu
-            timeA.registrarVitoria(golsA, golsB, caA, cvA);
-            timeB.registrarDerrota(golsB, golsA, caB, cvB);
-        } else if (golsA < golsB) {
-            // Time B venceu
-            timeA.registrarDerrota(golsA, golsB, caA, cvA);
-            timeB.registrarVitoria(golsB, golsA, caB, cvB);
+        Partida partida = new Partida(nomeTimeA, nomeTimeB, golsA, golsB, caA, cvA, caB, cvB);
+        partida.aplicar(timeA, timeB, +1);
+
+        totalGols += (golsA + golsB);
+
+        int idx = indexPartida(nomeTimeA, nomeTimeB);
+        if (idx >= 0) {
+            partidas.set(idx, partida);   // já existia, substitui
         } else {
-            // Empate
-            timeA.registrarEmpate(golsA, golsB, caA, cvA);
-            timeB.registrarEmpate(golsB, golsA, caB, cvB);
+            partidas.add(partida);        // ainda não existia, adiciona
+        }
+    }
+
+    public void editarResultado(String nomeTimeA, String nomeTimeB,
+                                int novosGolsA, int novosGolsB,
+                                int novosCaA, int novosCvA, int novosCaB, int novosCvB) {
+
+        // 1) Validações
+        if (novosGolsA < 0 || novosGolsB < 0 ||
+                novosCaA < 0 || novosCvA < 0 || novosCaB < 0 || novosCvB < 0) {
+            throw new IllegalArgumentException("Valores de gols e cartões não podem ser negativos");
         }
 
-        // Atualizar total de gols do campeonato
-        totalGols += (golsA + golsB);
+        if (nomeTimeA == null || nomeTimeB == null) {
+            throw new IllegalArgumentException("Times inválidos");
+        }
+
+        if (nomeTimeA.equalsIgnoreCase(nomeTimeB)) {
+            throw new IllegalArgumentException("Um time não pode jogar contra si mesmo");
+        }
+
+        Time timeA = buscarTime(nomeTimeA);
+        Time timeB = buscarTime(nomeTimeB);
+
+        if (timeA == null || timeB == null) {
+            throw new IllegalArgumentException("Um ou ambos os times não encontrados");
+        }
+
+        // 2) Procurar partida antiga entre A e B
+        int idx = indexPartida(nomeTimeA, nomeTimeB);
+        if (idx < 0) {
+            throw new IllegalStateException(
+                    "Não há partida registrada para editar entre " + nomeTimeA + " e " + nomeTimeB
+            );
+        }
+
+        Partida antiga = partidas.get(idx);
+
+        // 3) DESFAZER o resultado antigo (delta -1)
+        antiga.aplicar(timeA, timeB, -1);
+
+        // Ajustar total de gols
+        totalGols -= (antiga.getGm() + antiga.getGv());
+
+        // 4) APLICAR o novo resultado (delta +1)
+        Partida nova = new Partida(
+                nomeTimeA, nomeTimeB,
+                novosGolsA, novosGolsB,
+                novosCaA, novosCvA, novosCaB, novosCvB
+        );
+
+        nova.aplicar(timeA, timeB, +1);
+
+        // Ajustar total de gols (soma os novos)
+        totalGols += (novosGolsA + novosGolsB);
+
+        // 5) Atualizar a entrada na lista de partidas
+        partidas.set(idx, nova);
     }
+
 
     /**
      * Calcula o total de gols do campeonato.
@@ -183,8 +235,54 @@ public class Campeonato {
                 .collect(java.util.stream.Collectors.toList());
     }
 
+    private int indexPartida(String mand, String visit) {
+        if (mand == null || visit == null) return -1;
+        int i = 0;
+        for (Partida p : partidas) {
+            if (p.getMandante().equalsIgnoreCase(mand)
+                    && p.getVisitante().equalsIgnoreCase(visit)) return i;
+            i++;
+        }
+        return -1;
+    }
+
     public List<Time> ordenarTabela() {
         return obterTabelaClassificacao();
+    }
+
+    public int obterAtributo(String nomeTime, String atributo) {
+        Time t = buscarTime(nomeTime);
+        if (t == null) {
+            throw new IllegalArgumentException("Time não encontrado: " + nomeTime);
+        }
+
+        String a = atributo == null ? "" : atributo.trim().toUpperCase();
+
+        switch (a) {
+            case "PG":
+            case "PONTOS":
+                return t.getPontos();
+            case "V":
+                return t.getVitorias();
+            case "D":
+                return t.getDerrotas();
+            case "SG":
+                return t.getSaldoGols();
+            case "J":
+                return t.getJogos();
+            case "E":
+                return t.getEmpates();
+            case "GP":
+                return t.getGolsPro();
+            case "GC":
+                return t.getGolsContra();
+            case "CA":
+                return t.getCartoesAmarelos();
+            case "CV":
+                return t.getCartoesVermelhos();
+            default:
+                throw new IllegalArgumentException("Atributo desconhecido: " + atributo);
+        }
     }
 
     public List<Time> getTimes() {

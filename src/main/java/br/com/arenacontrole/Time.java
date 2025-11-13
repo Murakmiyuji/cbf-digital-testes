@@ -110,6 +110,31 @@ public class Time {
         return (pontos * 100.0) / (jogos * 3);
     }
 
+    void ajustarJogos(int delta) { this.jogos += delta; }
+
+    void ajustarVitoria(int delta) {
+        this.vitorias += delta;
+        this.pontos += 3 * delta;
+    }
+
+    void ajustarEmpate(int delta) {
+        this.empates += delta;
+        this.pontos += 1 * delta;
+    }
+
+    void ajustarDerrota(int delta) { this.derrotas += delta; }
+
+    void ajustarGols(int proDelta, int contraDelta) {
+        this.golsPro += proDelta;
+        this.golsContra += contraDelta;
+        this.saldoGols = this.golsPro - this.golsContra;
+    }
+
+    void ajustarCartoes(int caDelta, int cvDelta) {
+        this.cartoesAmarelos += caDelta;
+        this.cartoesVermelhos += cvDelta;
+    }
+
     @Override
     public String toString() {
         return format("%s (%s) - PG:%d J:%d V:%d E:%d D:%d GP:%d GC:%d SG:%d CA:%d CV:%d",

@@ -4,10 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TestesUnitariosManuela {
+
+    private Campeonato campeonato;
+
+    @BeforeEach
+    void setUp() {
+        campeonato = new Campeonato();
+    }
 
     @Test
     @DisplayName("CT11: Exibição da Tabela Simples (RF05)")
@@ -194,7 +202,7 @@ public class TestesUnitariosManuela {
         assertTrue(idxH >= 0, "Time H deve existir na tabela");
         assertTrue(idxG < idxH, "Time G (GP=10) deve aparecer acima do Time H (GP=8) com PG, V e SG iguais");
     }
-    
+
     @Test
     @DisplayName("CT16: Desempate por Cartões (4º e 5º Critérios)")
     void testCT16_DesempatePorCartoes() {
@@ -230,4 +238,27 @@ public class TestesUnitariosManuela {
         assertTrue(idxI >= 0, "Time I deve existir na tabela");
         assertTrue(idxJ < idxI, "Time J (CV=0) deve aparecer acima do Time I (CV=1)");
     }
+
+    @Test
+    @DisplayName("CT17: Edição de Resultado (Vitória para Derrota)")
+    void testCT17_EditarResultadoVitoriaParaDerrota() {
+        // Pré-condição: cadastrar times A e B
+        campeonato.cadastrarTime("A", "A");
+        campeonato.cadastrarTime("B", "B");
+
+        // Registrar partida inicial: A 1 x 0 B
+        // Time A fica com PG=3, V=1, D=0, SG=+1
+        campeonato.registrarResultado("A", "B", 1, 0, 0, 0, 0, 0);
+
+        // Ação: editar para A 0 x 1 B (vitória vira derrota)
+        campeonato.editarResultado("A", "B", 0, 1, 0, 0, 0, 0);
+
+        // Resultado esperado para o Time A:
+        // PG:0, V:0, D:1, SG:-1
+        assertEquals(0, campeonato.obterAtributo("A", "PG"));
+        assertEquals(0, campeonato.obterAtributo("A", "V"));
+        assertEquals(1, campeonato.obterAtributo("A", "D"));
+        assertEquals(-1, campeonato.obterAtributo("A", "SG"));
+    }
+
 }
