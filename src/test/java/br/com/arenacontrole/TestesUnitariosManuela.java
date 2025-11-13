@@ -261,4 +261,25 @@ public class TestesUnitariosManuela {
         assertEquals(-1, campeonato.obterAtributo("A", "SG"));
     }
 
+    @Test
+    @DisplayName("CT18: Edição de Resultado com Cartões")
+    void testCT18_EditarResultadoComCartoes() {
+        // Pré-condições: cadastrar times C e D
+        campeonato.cadastrarTime("C", "C");
+        campeonato.cadastrarTime("D", "D");
+
+        // Registrar partida inicial: C 2 x 2 D, com 1 cartão amarelo para C
+        // => C fica com PG=1, CA=1
+        campeonato.registrarResultado("C", "D", 2, 2, 1, 0, 0, 0);
+
+        // Ação: editar resultado para C 2 x 2 D, agora com 3 cartões amarelos para C
+        campeonato.editarResultado("C", "D", 2, 2, 3, 0, 0, 0);
+
+        // Resultado esperado:
+        // Time C com CA=3 e PG mantido em 1
+        assertEquals(3, campeonato.obterAtributo("C", "CA"));
+        assertEquals(1, campeonato.obterAtributo("C", "PG"));
+    }
+
+
 }
