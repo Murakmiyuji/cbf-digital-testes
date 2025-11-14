@@ -1,3 +1,7 @@
-br\com\arenacontrole\Campeonato$1.class
+br\com\arenacontrole\Partida.class
+br\com\arenacontrole\repository\CampeonatoRepository.class
 br\com\arenacontrole\Time.class
+br\com\arenacontrole\Campeonato$1.class
 br\com\arenacontrole\Campeonato.class
+br\com\arenacontrole\db\DatabaseConfig.class
+br\com\arenacontrole\Classificacao.class

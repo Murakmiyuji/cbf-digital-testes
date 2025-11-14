@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * - RF11: Validação de Cadastro de Times (Nome Vazio)
  * - RF12: Bloqueio de Placar Parcial (Campo Vazio)
  */
+@DisplayName("Testes Unitários - Yuji")
 public class TestesUnitariosYuji {
 
     private Campeonato campeonato;
@@ -33,13 +34,13 @@ public class TestesUnitariosYuji {
      * Pós-condições: A partida não é registrada; atributos permanecem inalterados
      */
     @BeforeEach
-    public void setUpBeforeEach() {
+    void setUp() {
         campeonato = new Campeonato();
     }
 
     @Test
-    @DisplayName("Test")
-    public void testCT21_BloqueioPlacarNegativoGolsPro() {
+    @DisplayName("CT21: Bloqueio de Placar Negativo (Gols Pró)")
+    void testCT21_BloqueioPlacarNegativoGolsPro() {
         // Arrange
         campeonato.cadastrarTime("Time A", "TA");
         campeonato.cadastrarTime("Time B", "TB");
@@ -68,7 +69,8 @@ public class TestesUnitariosYuji {
      * Pós-condições: A partida não é registrada; atributos permanecem inalterados
      */
     @Test
-    public void testCT22_BloqueioPlacarNegativoCartoesAmarelos() {
+    @DisplayName("CT22: Bloqueio de Placar Negativo (Cartões Amarelos)")
+    void testCT22_BloqueioPlacarNegativoCartoesAmarelos() {
         // Arrange
         campeonato.cadastrarTime("Time C", "TC");
         campeonato.cadastrarTime("Time D", "TD");
@@ -101,7 +103,8 @@ public class TestesUnitariosYuji {
      * Pós-condições: A partida não é registrada; atributos permanecem inalterados
      */
     @Test
-    public void testCT23_BloqueioTimesDuplicados() {
+    @DisplayName("CT23: Bloqueio de Times Duplicados em Partida")
+    void testCT23_BloqueioTimesDuplicados() {
         // Arrange
         campeonato.cadastrarTime("Time E", "TE");
 
@@ -133,7 +136,8 @@ public class TestesUnitariosYuji {
      * Pós-condições: O novo time não é criado
      */
     @Test
-    public void testCT24_ValidacaoCadastroNomeEmBranco() {
+    @DisplayName("CT24: Validação de Cadastro de Times (Nome em Branco)")
+    void testCT24_ValidacaoCadastroNomeEmBranco() {
         // Act & Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime("", "SEM")
@@ -150,7 +154,8 @@ public class TestesUnitariosYuji {
      * Teste adicional: Nome com apenas espaços
      */
     @Test
-    public void testValidacaoCadastroNomeApenasEspacos() {
+    @DisplayName("Nome com apenas espaços")
+    void testValidacaoCadastroNomeApenasEspacos() {
         // Act & Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime("   ", "SEM")
@@ -176,7 +181,8 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      */
     @Test
-    public void testCT25_BloqueioPlacarParcialComentario() {
+    @DisplayName("CT25: Bloqueio de Placar Parcial (comentário)")
+    void testCT25_BloqueioPlacarParcialComentario() {
         // Este teste documenta que a validação de campos nulos/vazios
         // deve ser feita na camada de apresentação (interface web/mobile)
         // antes de chamar os métodos do modelo de domínio.
@@ -194,7 +200,8 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      */
     @Test
-    public void testCT26_BloqueioPlacarParcialCartoesComentario() {
+    @DisplayName("CT26: Bloqueio de Placar Parcial (Cartões - comentário)")
+    void testCT26_BloqueioPlacarParcialCartoesComentario() {
         // Similar ao CT25, a validação de campos obrigatórios deve ser
         // implementada na camada de apresentação.
         assertTrue(true, "Validação de campos obrigatórios deve ser feita na camada de apresentação");
@@ -211,7 +218,8 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      */
     @Test
-    public void testCT27_BloqueioEntradaNaoNumericaComentario() {
+    @DisplayName("CT27: Bloqueio de Entrada Não Numérica (comentário)")
+    void testCT27_BloqueioEntradaNaoNumericaComentario() {
         // Java com tipos primitivos previne este erro em tempo de compilação
         assertTrue(true, "Java com tipos primitivos previne entradas não numéricas");
     }
@@ -226,7 +234,8 @@ public class TestesUnitariosYuji {
      * Pós-condições: O novo time não é criado
      */
     @Test
-    public void testCT28_ValidacaoCadastroAbreviaturaComEspaco() {
+    @DisplayName("CT28: Validação de Cadastro - Abreviatura com Espaço")
+    void testCT28_ValidacaoCadastroAbreviaturaComEspaco() {
         // Act & Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime("Time Validação", "TV A")
@@ -249,7 +258,8 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      */
     @Test
-    public void testCT29_BloqueioCadastroNoMeioComentario() {
+    @DisplayName("CT29: Bloqueio de Cadastro no Meio (comentário)")
+    void testCT29_BloqueioCadastroNoMeioComentario() {
         // Arrange
         campeonato.cadastrarTime("Time A", "TA");
         campeonato.cadastrarTime("Time B", "TB");
@@ -274,7 +284,8 @@ public class TestesUnitariosYuji {
      * Prioridade: Alta
      */
     @Test
-    public void testCT30_BloqueioCartoesMultiplosFaltandoComentario() {
+    @DisplayName("CT30: Bloqueio de Placar - Cartões Múltiplos Faltando (comentário)")
+    void testCT30_BloqueioCartoesMultiplosFaltandoComentario() {
         assertTrue(true, "Validação de múltiplos campos deve ser feita na camada de apresentação");
     }
 
@@ -284,7 +295,8 @@ public class TestesUnitariosYuji {
      * Teste adicional: Verificar que cartões vermelhos negativos são bloqueados
      */
     @Test
-    public void testBloqueioCartoesVermelhosNegativos() {
+    @DisplayName("Cartões Vermelhos Negativos")
+    void testBloqueioCartoesVermelhosNegativos() {
         // Arrange
         campeonato.cadastrarTime("Time F", "TF");
         campeonato.cadastrarTime("Time G", "TG");
@@ -303,7 +315,8 @@ public class TestesUnitariosYuji {
      * Teste adicional: Verificar que gols contra negativos são bloqueados
      */
     @Test
-    public void testBloqueioGolsContraNegativos() {
+    @DisplayName("Gols Contra Negativos")
+    void testBloqueioGolsContraNegativos() {
         // Arrange
         campeonato.cadastrarTime("Time H", "TH");
         campeonato.cadastrarTime("Time I", "TI");
@@ -321,7 +334,8 @@ public class TestesUnitariosYuji {
      * Teste adicional: Verificar cadastro com nome null
      */
     @Test
-    public void testValidacaoCadastroNomeNull() {
+    @DisplayName("Validação de Cadastro - Nome null")
+    void testValidacaoCadastroNomeNull() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime(null, "TST")
         );
@@ -332,7 +346,8 @@ public class TestesUnitariosYuji {
      * Teste adicional: Verificar cadastro com abreviatura null
      */
     @Test
-    public void testValidacaoCadastroAbreviaturaNull() {
+    @DisplayName("Validação de Cadastro - Abreviatura null")
+    void testValidacaoCadastroAbreviaturaNull() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime("Time Teste", null)
         );
@@ -343,7 +358,8 @@ public class TestesUnitariosYuji {
      * Teste adicional: Verificar cadastro com abreviatura vazia
      */
     @Test
-    public void testValidacaoCadastroAbreviaturaVazia() {
+    @DisplayName("Validação de Cadastro - Abreviatura vazia")
+    void testValidacaoCadastroAbreviaturaVazia() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime("Time Teste", "")
         );
@@ -354,7 +370,8 @@ public class TestesUnitariosYuji {
      * Teste de sucesso: Cadastro válido
      */
     @Test
-    public void testCadastroValidoSucesso() {
+    @DisplayName("Cadastro válido - sucesso")
+    void testCadastroValidoSucesso() {
         // Act
         boolean resultado = campeonato.cadastrarTime("São Paulo", "SAO");
 
@@ -373,7 +390,8 @@ public class TestesUnitariosYuji {
      * Teste de sucesso: Registro válido de partida
      */
     @Test
-    public void testRegistroValidoPartida() {
+    @DisplayName("Registro válido de partida")
+    void testRegistroValidoPartida() {
         // Arrange
         campeonato.cadastrarTime("Flamengo", "FLA");
         campeonato.cadastrarTime("Vasco", "VAS");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.arenacontrole.TestesUnitariosComplementares" time="0.185" tests="13" errors="11" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.arenacontrole.TestesUnitariosManuela" time="0.045" tests="10" errors="10" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,134 +59,91 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testCT21_BloqueioDePlacarNegativo" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.063">
+  <testcase name="testCT16_DesempatePorCartoes" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.002">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT21_BloqueioDePlacarNegativo(TestesUnitariosComplementares.java:118)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT16_DesempatePorCartoes(TestesUnitariosManuela.java:211)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT20_BloqueioRemocaoTime" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.004">
+  <testcase name="testCT20_BloqueioRemocaoTimeComPartidas" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.002">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT20_BloqueioRemocaoTime(TestesUnitariosComplementares.java:97)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT20_BloqueioRemocaoTimeComPartidas(TestesUnitariosManuela.java:304)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT35_BloqueioTimesImpares3Times" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.003">
+  <testcase name="testCT14_DesempatePorSaldoDeGols" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.003">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT35_BloqueioTimesImpares3Times(TestesUnitariosComplementares.java:224)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT14_DesempatePorSaldoDeGols(TestesUnitariosManuela.java:145)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT24_ValidacaoCadastroNomeEmBranco" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.014">
-    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
-	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT24_ValidacaoCadastroNomeEmBranco(TestesUnitariosComplementares.java:167)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
-	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.lambda$testCT24_ValidacaoCadastroNomeEmBranco$3(TestesUnitariosComplementares.java:168)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
-	... 6 more
-]]></failure>
-  </testcase>
-  <testcase name="testCT23_BloqueioTimesDuplicados" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.004">
+  <testcase name="testCT13_DesempatePorVitorias" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.002">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT23_BloqueioTimesDuplicados(TestesUnitariosComplementares.java:150)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT13_DesempatePorVitorias(TestesUnitariosManuela.java:109)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT37_PermissaoTimesPares" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.004">
+  <testcase name="testCT17_EditarResultadoVitoriaParaDerrota" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.002">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT37_PermissaoTimesPares(TestesUnitariosComplementares.java:240)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT17_EditarResultadoVitoriaParaDerrota(TestesUnitariosManuela.java:246)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT14_DesempatePorSaldoDeGols" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.001">
+  <testcase name="testCT12_OrdenacaoPorPontos" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.003">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT14_DesempatePorSaldoDeGols(TestesUnitariosComplementares.java:58)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT12_OrdenacaoPorPontos(TestesUnitariosManuela.java:71)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT12_OrdenacaoPorPontos" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002">
+  <testcase name="testCT11_ExibicaoTabelaSimples" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.002">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT12_OrdenacaoPorPontos(TestesUnitariosComplementares.java:37)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT11_ExibicaoTabelaSimples(TestesUnitariosManuela.java:25)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT32_CalculoTotalGolsAcumulo" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.003">
+  <testcase name="testCT18_EditarResultadoComCartoes" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.002">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT32_CalculoTotalGolsAcumulo(TestesUnitariosComplementares.java:205)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT18_EditarResultadoComCartoes(TestesUnitariosManuela.java:268)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT31_CalculoTotalGolsPartidaUnica" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002">
+  <testcase name="testCT15_DesempatePorGolsPro" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.003">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT31_CalculoTotalGolsPartidaUnica(TestesUnitariosComplementares.java:192)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT15_DesempatePorGolsPro(TestesUnitariosManuela.java:177)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ]]></error>
   </testcase>
-  <testcase name="testCT28_ValidacaoAbreviaturaComEspaco" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.003">
-    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
-	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT28_ValidacaoAbreviaturaComEspaco(TestesUnitariosComplementares.java:179)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
-	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.lambda$testCT28_ValidacaoAbreviaturaComEspaco$4(TestesUnitariosComplementares.java:180)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
-	... 6 more
-]]></failure>
-  </testcase>
-  <testcase name="testCT22_BloqueioCartaoNegativo" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.002">
+  <testcase name="testCT19_RemocaoTimeComSucesso" classname="br.com.arenacontrole.TestesUnitariosManuela" time="0.005">
     <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT22_BloqueioCartaoNegativo(TestesUnitariosComplementares.java:133)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-]]></error>
-  </testcase>
-  <testcase name="testCT19_RemocaoTimeComSucesso" classname="br.com.arenacontrole.TestesUnitariosComplementares" time="0.01">
-    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
-	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosComplementares.testCT19_RemocaoTimeComSucesso(TestesUnitariosComplementares.java:81)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT19_RemocaoTimeComSucesso(TestesUnitariosManuela.java:288)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)

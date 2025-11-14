@@ -1,83 +1,83 @@
 -------------------------------------------------------------------------------
-Test set: br.com.arenacontrole.TestesUnitariosSamuel
+Test set: br.com.arenacontrole.TestesUnitariosManuela
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.076 s <<< FAILURE! - in br.com.arenacontrole.TestesUnitariosSamuel
-br.com.arenacontrole.TestesUnitariosSamuel.testCT05_RegistroPlacarExtremo  Time elapsed: 0.003 s  <<< ERROR!
+Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.045 s <<< FAILURE! - in br.com.arenacontrole.TestesUnitariosManuela
+br.com.arenacontrole.TestesUnitariosManuela.testCT16_DesempatePorCartoes  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT05_RegistroPlacarExtremo(TestesUnitariosSamuel.java:114)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT16_DesempatePorCartoes(TestesUnitariosManuela.java:211)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT08_CalculoAutomaticoGolsESaldo  Time elapsed: 0.003 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT20_BloqueioRemocaoTimeComPartidas  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT08_CalculoAutomaticoGolsESaldo(TestesUnitariosSamuel.java:171)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT20_BloqueioRemocaoTimeComPartidas(TestesUnitariosManuela.java:304)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT07_CalculoAutomaticoPontosEmpate  Time elapsed: 0.008 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT14_DesempatePorSaldoDeGols  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT07_CalculoAutomaticoPontosEmpate(TestesUnitariosSamuel.java:153)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT14_DesempatePorSaldoDeGols(TestesUnitariosManuela.java:145)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT04_RegistroPlacarComCartoesEGols  Time elapsed: 0.008 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT13_DesempatePorVitorias  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT04_RegistroPlacarComCartoesEGols(TestesUnitariosSamuel.java:90)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT13_DesempatePorVitorias(TestesUnitariosManuela.java:109)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT06_CalculoAutomaticoPontosVitoria  Time elapsed: 0.003 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT17_EditarResultadoVitoriaParaDerrota  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT06_CalculoAutomaticoPontosVitoria(TestesUnitariosSamuel.java:135)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT17_EditarResultadoVitoriaParaDerrota(TestesUnitariosManuela.java:246)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT02_VerificacaoInicializacaoAtributos  Time elapsed: 0.002 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT12_OrdenacaoPorPontos  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT02_VerificacaoInicializacaoAtributos(TestesUnitariosSamuel.java:49)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT12_OrdenacaoPorPontos(TestesUnitariosManuela.java:71)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT01_CadastroBasicoComNomeEAbreviacao  Time elapsed: 0.002 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT11_ExibicaoTabelaSimples  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT01_CadastroBasicoComNomeEAbreviacao(TestesUnitariosSamuel.java:31)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT11_ExibicaoTabelaSimples(TestesUnitariosManuela.java:25)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT03_VerificacaoManutencaoAtributosNaoAfetados  Time elapsed: 0.005 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT18_EditarResultadoComCartoes  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT03_VerificacaoManutencaoAtributosNaoAfetados(TestesUnitariosSamuel.java:69)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT18_EditarResultadoComCartoes(TestesUnitariosManuela.java:268)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT10_IncrementoAutomaticoVED  Time elapsed: 0.003 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT15_DesempatePorGolsPro  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT10_IncrementoAutomaticoVED(TestesUnitariosSamuel.java:207)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT15_DesempatePorGolsPro(TestesUnitariosManuela.java:177)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 
-br.com.arenacontrole.TestesUnitariosSamuel.testCT09_IncrementoAutomaticoJogosDisputados  Time elapsed: 0.006 s  <<< ERROR!
+br.com.arenacontrole.TestesUnitariosManuela.testCT19_RemocaoTimeComSucesso  Time elapsed: 0.005 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
 	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
-	at br.com.arenacontrole.TestesUnitariosSamuel.testCT09_IncrementoAutomaticoJogosDisputados(TestesUnitariosSamuel.java:189)
+	at br.com.arenacontrole.TestesUnitariosManuela.testCT19_RemocaoTimeComSucesso(TestesUnitariosManuela.java:288)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)

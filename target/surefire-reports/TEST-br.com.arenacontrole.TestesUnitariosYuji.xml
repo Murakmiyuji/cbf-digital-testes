@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.arenacontrole.TestesUnitariosYuji" time="0.143" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.arenacontrole.TestesUnitariosYuji" time="0.075" tests="18" errors="8" skipped="0" failures="6">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\yujif\Desktop\cbf-digital-testes\target\test-classes;C:\Users\yujif\Desktop\cbf-digital-testes\target\classes;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\yujif\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\yujif\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\yujif\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\yujif\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\yujif\Desktop\cbf-digital-testes\target\test-classes;C:\Users\yujif\Desktop\cbf-digital-testes\target\classes;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\yujif\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\yujif\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\yujif\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\yujif\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\yujif\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\yujif\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\yujif\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\yujif\.m2\repository\org\slf4j\slf4j-api\2.0.0-alpha1\slf4j-api-2.0.0-alpha1.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BR"/>
     <property name="sun.boot.library.path" value="C:\Users\yujif\.jdks\openjdk-22.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\yujif\AppData\Local\Temp\surefire2879084362890789517\surefirebooter-20251109201857726_3.jar C:\Users\yujif\AppData\Local\Temp\surefire2879084362890789517 2025-11-09T20-18-57_381-jvmRun1 surefire-20251109201857726_1tmp surefire_0-20251109201857726_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\yujif\AppData\Local\Temp\surefire5233273521214042630\surefirebooter-20251113223721649_3.jar C:\Users\yujif\AppData\Local\Temp\surefire5233273521214042630 2025-11-13T22-37-21_154-jvmRun1 surefire-20251113223721649_1tmp surefire_0-20251113223721649_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\yujif\Desktop\cbf-digital-testes\target\test-classes;C:\Users\yujif\Desktop\cbf-digital-testes\target\classes;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\yujif\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\yujif\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\yujif\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\yujif\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\yujif\Desktop\cbf-digital-testes\target\test-classes;C:\Users\yujif\Desktop\cbf-digital-testes\target\classes;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\yujif\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\yujif\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;C:\Users\yujif\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\yujif\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\yujif\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\yujif\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\yujif\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\yujif\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\yujif\.m2\repository\org\slf4j\slf4j-api\2.0.0-alpha1\slf4j-api-2.0.0-alpha1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\yujif"/>
     <property name="user.language" value="pt"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\yujif\AppData\Local\Temp\surefire2879084362890789517\surefirebooter-20251109201857726_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\yujif\AppData\Local\Temp\surefire5233273521214042630\surefirebooter-20251113223721649_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -59,22 +59,182 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testCT24_ValidacaoCadastroNomeEmBranco" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.036"/>
-  <testcase name="testValidacaoCadastroAbreviaturaVazia" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.008"/>
-  <testcase name="testCT23_BloqueioTimesDuplicados" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.01"/>
-  <testcase name="testCT21_BloqueioPlacarNegativoGolsPro" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004"/>
-  <testcase name="testCT25_BloqueioPlacarParcialComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testCT27_BloqueioEntradaNaoNumericaComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testCadastroValidoSucesso" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testRegistroValidoPartida" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testCT29_BloqueioCadastroNoMeioComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testCT30_BloqueioCartoesMultiplosFaltandoComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
-  <testcase name="testBloqueioGolsContraNegativos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
-  <testcase name="testCT28_ValidacaoCadastroAbreviaturaComEspaco" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004"/>
-  <testcase name="testCT26_BloqueioPlacarParcialCartoesComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testCT22_BloqueioPlacarNegativoCartoesAmarelos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testValidacaoCadastroNomeApenasEspacos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
-  <testcase name="testBloqueioCartoesVermelhosNegativos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003"/>
-  <testcase name="testValidacaoCadastroAbreviaturaNull" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
-  <testcase name="testValidacaoCadastroNomeNull" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002"/>
+  <testcase name="testCT24_ValidacaoCadastroNomeEmBranco" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.005">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCT24_ValidacaoCadastroNomeEmBranco(TestesUnitariosYuji.java:142)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.lambda$testCT24_ValidacaoCadastroNomeEmBranco$3(TestesUnitariosYuji.java:143)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+]]></failure>
+  </testcase>
+  <testcase name="testValidacaoCadastroAbreviaturaVazia" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at br.com.arenacontrole.TestesUnitariosYuji.testValidacaoCadastroAbreviaturaVazia(TestesUnitariosYuji.java:363)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.lambda$testValidacaoCadastroAbreviaturaVazia$10(TestesUnitariosYuji.java:364)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+]]></failure>
+  </testcase>
+  <testcase name="testCT23_BloqueioTimesDuplicados" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCT23_BloqueioTimesDuplicados(TestesUnitariosYuji.java:109)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testCT21_BloqueioPlacarNegativoGolsPro" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCT21_BloqueioPlacarNegativoGolsPro(TestesUnitariosYuji.java:45)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testCT25_BloqueioPlacarParcialComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004"/>
+  <testcase name="testCT27_BloqueioEntradaNaoNumericaComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004"/>
+  <testcase name="testCadastroValidoSucesso" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCadastroValidoSucesso(TestesUnitariosYuji.java:376)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testRegistroValidoPartida" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testRegistroValidoPartida(TestesUnitariosYuji.java:396)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testCT29_BloqueioCadastroNoMeioComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.001">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCT29_BloqueioCadastroNoMeioComentario(TestesUnitariosYuji.java:264)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testCT30_BloqueioCartoesMultiplosFaltandoComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.001"/>
+  <testcase name="testBloqueioGolsContraNegativos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testBloqueioGolsContraNegativos(TestesUnitariosYuji.java:321)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testCT28_ValidacaoCadastroAbreviaturaComEspaco" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCT28_ValidacaoCadastroAbreviaturaComEspaco(TestesUnitariosYuji.java:240)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.lambda$testCT28_ValidacaoCadastroAbreviaturaComEspaco$5(TestesUnitariosYuji.java:241)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+]]></failure>
+  </testcase>
+  <testcase name="testCT26_BloqueioPlacarParcialCartoesComentario" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.001"/>
+  <testcase name="testCT22_BloqueioPlacarNegativoCartoesAmarelos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testCT22_BloqueioPlacarNegativoCartoesAmarelos(TestesUnitariosYuji.java:75)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testValidacaoCadastroNomeApenasEspacos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.003">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at br.com.arenacontrole.TestesUnitariosYuji.testValidacaoCadastroNomeApenasEspacos(TestesUnitariosYuji.java:160)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.lambda$testValidacaoCadastroNomeApenasEspacos$4(TestesUnitariosYuji.java:161)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+]]></failure>
+  </testcase>
+  <testcase name="testBloqueioCartoesVermelhosNegativos" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.002">
+    <error message="Cannot invoke &quot;java.util.List.stream()&quot; because &quot;this.times&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.testBloqueioCartoesVermelhosNegativos(TestesUnitariosYuji.java:301)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></error>
+  </testcase>
+  <testcase name="testValidacaoCadastroAbreviaturaNull" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at br.com.arenacontrole.TestesUnitariosYuji.testValidacaoCadastroAbreviaturaNull(TestesUnitariosYuji.java:351)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.lambda$testValidacaoCadastroAbreviaturaNull$9(TestesUnitariosYuji.java:352)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+]]></failure>
+  </testcase>
+  <testcase name="testValidacaoCadastroNomeNull" classname="br.com.arenacontrole.TestesUnitariosYuji" time="0.004">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at br.com.arenacontrole.TestesUnitariosYuji.testValidacaoCadastroNomeNull(TestesUnitariosYuji.java:339)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.List.stream()" because "this.times" is null
+	at br.com.arenacontrole.Campeonato.cadastrarTime(Campeonato.java:44)
+	at br.com.arenacontrole.TestesUnitariosYuji.lambda$testValidacaoCadastroNomeNull$8(TestesUnitariosYuji.java:340)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+]]></failure>
+  </testcase>
 </testsuite>

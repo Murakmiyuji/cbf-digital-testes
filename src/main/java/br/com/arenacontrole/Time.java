@@ -135,6 +135,17 @@ public class Time {
         this.cartoesVermelhos += cvDelta;
     }
 
+    // adicionei setters públicos mínimos para persistência (se já existirem, não duplique)
+    public void setPontos(int pontos) { this.pontos = pontos; } // { changed code }
+    public void setJogos(int jogos) { this.jogos = jogos; } // { changed code }
+    public void setVitorias(int vitorias) { this.vitorias = vitorias; } // { changed code }
+    public void setEmpates(int empates) { this.empates = empates; } // { changed code }
+    public void setDerrotas(int derrotas) { this.derrotas = derrotas; } // { changed code }
+    public void setGolsPro(int golsPro) { this.golsPro = golsPro; } // { changed code }
+    public void setGolsContra(int golsContra) { this.golsContra = golsContra; } // { changed code }
+    public void setCartoesAmarelos(int ca) { this.cartoesAmarelos = ca; } // { changed code }
+    public void setCartoesVermelhos(int cv) { this.cartoesVermelhos = cv; } // { changed code }
+
     @Override
     public String toString() {
         return format("%s (%s) - PG:%d J:%d V:%d E:%d D:%d GP:%d GC:%d SG:%d CA:%d CV:%d",
