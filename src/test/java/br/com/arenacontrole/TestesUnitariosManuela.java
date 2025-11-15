@@ -21,7 +21,6 @@ public class TestesUnitariosManuela {
     @DisplayName("CT11: Exibição da Tabela Simples (RF05)")
     void testCT11_ExibicaoTabelaSimples() {
         // Pré-condição: times cadastrados e uma partida A 3x0 B registrada
-        Campeonato campeonato = new Campeonato();
         campeonato.cadastrarTime("Time A", "TA");
         campeonato.cadastrarTime("Time B", "TB");
         campeonato.registrarResultado("Time A", "Time B", 3, 0, 0, 0, 0, 0);
@@ -67,7 +66,6 @@ public class TestesUnitariosManuela {
     @DisplayName("CT12: Ordenação por Pontos (Prioridade Máxima)")
     void testCT12_OrdenacaoPorPontos() {
         // Pré-condição: cadastrar times e configurar pontos via partidas
-        Campeonato campeonato = new Campeonato();
         campeonato.cadastrarTime("Time A", "A"); // A terá 3 pontos
         campeonato.cadastrarTime("Time B", "B"); // B terá 1 ponto
         campeonato.cadastrarTime("Time X", "X"); // adversário de A
@@ -105,7 +103,6 @@ public class TestesUnitariosManuela {
     @DisplayName("CT13: Desempate por Vitórias (1º Critério)")
     void testCT13_DesempatePorVitorias() {
         // Pré-condição: cadastrar times
-        Campeonato campeonato = new Campeonato();
         campeonato.cadastrarTime("Time C", "C"); // terá V=2 e 6 pts
         campeonato.cadastrarTime("Time D", "D"); // terá V=1 e 6 pts
         campeonato.cadastrarTime("O1", "O1");
@@ -141,7 +138,6 @@ public class TestesUnitariosManuela {
     @DisplayName("CT14: Desempate por Saldo de Gols (2º Critério)")
     void testCT14_DesempatePorSaldoDeGols() {
         // Pré-condição: cadastrar times
-        Campeonato campeonato = new Campeonato();
         campeonato.cadastrarTime("Time E", "E"); // SG = 4
         campeonato.cadastrarTime("Time F", "F"); // SG = 2
         campeonato.cadastrarTime("O1", "O1");
@@ -173,7 +169,6 @@ public class TestesUnitariosManuela {
     @DisplayName("CT15: Desempate por Gols Pró (3º Critério)")
     void testCT15_DesempatePorGolsPro() {
         // Pré-condição: cadastrar times
-        Campeonato campeonato = new Campeonato();
         campeonato.cadastrarTime("Time G", "G"); // GP = 10
         campeonato.cadastrarTime("Time H", "H"); // GP = 8
         campeonato.cadastrarTime("O1", "O1");
@@ -207,7 +202,6 @@ public class TestesUnitariosManuela {
     @DisplayName("CT16: Desempate por Cartões (4º e 5º Critérios)")
     void testCT16_DesempatePorCartoes() {
         // Pré-condição: cadastrar times
-        Campeonato campeonato = new Campeonato();
         campeonato.cadastrarTime("Time J", "J"); // CV = 0
         campeonato.cadastrarTime("Time I", "I"); // CV = 1
         campeonato.cadastrarTime("O1", "O1");

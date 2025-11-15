@@ -141,10 +141,17 @@ public class Time {
     public void setVitorias(int vitorias) { this.vitorias = vitorias; } // { changed code }
     public void setEmpates(int empates) { this.empates = empates; } // { changed code }
     public void setDerrotas(int derrotas) { this.derrotas = derrotas; } // { changed code }
-    public void setGolsPro(int golsPro) { this.golsPro = golsPro; } // { changed code }
-    public void setGolsContra(int golsContra) { this.golsContra = golsContra; } // { changed code }
+    public void setGolsPro(int golsPro) { 
+        this.golsPro = golsPro; 
+        this.saldoGols = this.golsPro - this.golsContra; // recalcula saldoGols
+    } // { changed code }
+    public void setGolsContra(int golsContra) { 
+        this.golsContra = golsContra; 
+        this.saldoGols = this.golsPro - this.golsContra; // recalcula saldoGols
+    } // { changed code }
     public void setCartoesAmarelos(int ca) { this.cartoesAmarelos = ca; } // { changed code }
     public void setCartoesVermelhos(int cv) { this.cartoesVermelhos = cv; } // { changed code }
+    public void setSaldoGols(int saldoGols) { this.saldoGols = saldoGols; } // { changed code }
 
     @Override
     public String toString() {
