@@ -80,6 +80,46 @@ public class TestesIntegracaoManuela {
         assertEquals(0, t2.getPontos(), "Time2 deve ter 0 pontos");
         assertEquals(1, t3.getPontos(), "Time3 deve ter 1 ponto (empate)");
         assertEquals(1, t4.getPontos(), "Time4 deve ter 1 ponto (empate)");
+
+        var tabela = campeonato.exibirTabelaClassificacao();
+
+        Classificacao c1 = tabela.stream()
+                .filter(c -> c.getNome().equals("Time1"))
+                .findFirst().orElse(null);
+        Classificacao c2 = tabela.stream()
+                .filter(c -> c.getNome().equals("Time2"))
+                .findFirst().orElse(null);
+        Classificacao c3 = tabela.stream()
+                .filter(c -> c.getNome().equals("Time3"))
+                .findFirst().orElse(null);
+        Classificacao c4 = tabela.stream()
+                .filter(c -> c.getNome().equals("Time4"))
+                .findFirst().orElse(null);
+
+        assertNotNull(c1);
+        assertNotNull(c2);
+        assertNotNull(c3);
+        assertNotNull(c4);
+
+        // Time1
+        assertEquals(t1.getPontos(),     c1.getPG(), "PG divergente para Time1");
+        assertEquals(t1.getSaldoGols(),  c1.getSG(), "SG divergente para Time1");
+        assertEquals(t1.getGolsPro(),    c1.getGP(), "GP divergente para Time1");
+        assertEquals(t1.getGolsContra(), c1.getGC(), "GC divergente para Time1");
+
+        // Time2
+        assertEquals(t2.getPontos(),     c2.getPG(), "PG divergente para Time2");
+        assertEquals(t2.getSaldoGols(),  c2.getSG(), "SG divergente para Time2");
+        assertEquals(t2.getGolsPro(),    c2.getGP(), "GP divergente para Time2");
+        assertEquals(t2.getGolsContra(), c2.getGC(), "GC divergente para Time2");
+
+        // Time3
+        assertEquals(t3.getPontos(),     c3.getPG(), "PG divergente para Time3");
+        assertEquals(t3.getSaldoGols(),  c3.getSG(), "SG divergente para Time3");
+
+        // Time4
+        assertEquals(t4.getPontos(),     c4.getPG(), "PG divergente para Time4");
+        assertEquals(t4.getSaldoGols(),  c4.getSG(), "SG divergente para Time4");
     }
 
     /**
