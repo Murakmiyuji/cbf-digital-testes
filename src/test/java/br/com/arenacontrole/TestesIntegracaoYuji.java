@@ -183,53 +183,41 @@ public class TestesIntegracaoYuji {
     }
 
     /**
-     * CT52: Múltiplas Partidas com Persistência Acumulativa
-     * Verifica que sucessivas partidas atualizam os atributos corretamente no BD
+     * CT52: Bloqueio de Placar Parcial com Persistência
+     * Verifica que o bloqueio de placar com campo vazio funciona
      *
-     * Entradas: 
-     * - Cadastro: "Time D" vs "Time E"
-     * - Partida 1: registrarResultado("Time D", "Time E", 2, 1, 1, 0, 0, 0)
-     * - Partida 2: registrarResultado("Time D", "Time E", 1, 1, 0, 0, 0, 0)
-     *
+     * Entradas: registrarResultado("Time K", "Time L", 1, null, 0, 0, 0, 0)
      * Resultado Esperado:
-     * - Primeira partida: 1 jogo, 3 pontos, 1 vitória
-     * - Segunda partida: 2 jogos, 4 pontos, 1 vitória + 1 empate
-     * - Atributos cumulativos: gols = 3+1, cartões acumulados
+     * - O sistema bloqueia o registro (IllegalArgumentException)
+     * - Atributos permanecem inalterados no BD
+     * - Nenhuma partida é registrada no histórico
      *
      * Pré-condição: Dois times cadastrados
-     * Pós-condição: BD com múltiplas partidas registradas, atributos acumulados
+     * Pós-condição: BD inalterado, exception lançada, nenhuma partida inserida
      */
     @Test
-    @DisplayName("CT52: Múltiplas Partidas com Persistência Acumulativa")
-    void testCT52_MultiplasPartidasAcumulativasPersistencia() {
+    @DisplayName("CT52: Bloqueio de Placar Parcial com Persistência")
+    void testCT52_BloqueioPlacarParcialPersistencia() {
         // Arrange
-        campeonato.cadastrarTime("Time D", "TD");
-        campeonato.cadastrarTime("Time E", "TE");
+        campeonato.cadastrarTime("Time K", "TK");
+        campeonato.cadastrarTime("Time L", "TL");
 
-        // Act - Primeira partida (Time D vence 2x1)
-        campeonato.registrarResultado("Time D", "Time E", 2, 1, 1, 0, 0, 0);
+        Time timeKAntes = repo.findTimeByNome("Time K");
+        int jogosAntes = timeKAntes.getJogos();
 
-        // Assert - Verifica primeira partida
-        Time timeDDepois1 = repo.findTimeByNome("Time D");
-        assertEquals(1, timeDDepois1.getJogos(), "Deve ter 1 jogo após primeira partida");
-        assertEquals(3, timeDDepois1.getPontos(), "Deve ter 3 pontos (vitória)");
-        assertEquals(1, timeDDepois1.getVitorias(), "Deve ter 1 vitória");
-        assertEquals(2, timeDDepois1.getGolsPro(), "Deve ter 2 gols pró");
-        assertEquals(1, timeDDepois1.getGolsContra(), "Deve ter 1 gol contra");
-        assertEquals(1, timeDDepois1.getCartoesAmarelos(), "Deve ter 1 cartão amarelo");
+        // Act & Assert - Tenta registrar com placar incompleto (null)
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time K", "Time L", 1, null, 0, 0, 0, 0)
+        );
 
-        // Act - Segunda partida (empate 1x1)
-        campeonato.registrarResultado("Time D", "Time E", 1, 1, 0, 0, 0, 0);
+        assertTrue(e.getMessage().toLowerCase().contains("placar") ||
+                   e.getMessage().toLowerCase().contains("numérico") ||
+                   e.getMessage().toLowerCase().contains("preenchid"),
+                   "Mensagem de erro deve mencionar campo de placar");
 
-        // Assert - Verifica segunda partida com acúmulo
-        Time timeDDepois2 = repo.findTimeByNome("Time D");
-        assertEquals(2, timeDDepois2.getJogos(), "Deve ter 2 jogos");
-        assertEquals(4, timeDDepois2.getPontos(), "Deve ter 4 pontos (3 + 1 de empate)");
-        assertEquals(1, timeDDepois2.getVitorias(), "Deve manter 1 vitória");
-        assertEquals(1, timeDDepois2.getEmpates(), "Deve ter 1 empate");
-        assertEquals(0, timeDDepois2.getDerrotas(), "Deve ter 0 derrotas");
-        assertEquals(3, timeDDepois2.getGolsPro(), "Deve ter 3 gols pró acumulados (2 + 1)");
-        assertEquals(2, timeDDepois2.getGolsContra(), "Deve ter 2 gols contra acumulados (1 + 1)");
-        assertEquals(1, timeDDepois2.getCartoesAmarelos(), "Deve ter 1 cartão amarelo (sem novos)");
+        // Verifica que atributos não foram alterados no BD
+        Time timeKDepois = repo.findTimeByNome("Time K");
+        assertEquals(jogosAntes, timeKDepois.getJogos(), "Jogos não devem ter mudado");
+        assertEquals(0, timeKDepois.getPontos(), "Pontos devem permanecer 0");
     }
 }
