@@ -1,4 +1,8 @@
-br\com\arenacontrole\TestesUnitariosComplementares.class
-br\com\arenacontrole\TestesUnitariosSamuel.class
+br\com\arenacontrole\TestesIntegracaoManuela.class
+br\com\arenacontrole\TestesIntegracaoCaio.class
+br\com\arenacontrole\TestesUnitariosCaio.class
 br\com\arenacontrole\TestesUnitariosManuela.class
+br\com\arenacontrole\TestesIntegracaoSamuel.class
+br\com\arenacontrole\TestesUnitariosSamuel.class
+br\com\arenacontrole\TestesIntegracaoYuji.class
 br\com\arenacontrole\TestesUnitariosYuji.class

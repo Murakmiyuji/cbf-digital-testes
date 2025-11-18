@@ -194,7 +194,7 @@ public class TestesIntegracaoYuji {
      *
      * Pré-condição: Dois times cadastrados
      * Pós-condição: BD inalterado, exception lançada, nenhuma partida inserida
-     */
+*/
     @Test
     @DisplayName("CT52: Bloqueio de Placar Parcial com Persistência")
     void testCT52_BloqueioPlacarParcialPersistencia() {
@@ -219,5 +219,5 @@ public class TestesIntegracaoYuji {
         Time timeKDepois = repo.findTimeByNome("Time K");
         assertEquals(jogosAntes, timeKDepois.getJogos(), "Jogos não devem ter mudado");
         assertEquals(0, timeKDepois.getPontos(), "Pontos devem permanecer 0");
-    }
+    } 
 }

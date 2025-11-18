@@ -43,6 +43,12 @@ public class Campeonato {
         if (nome == null || nome.trim().isEmpty()) {
             throw new IllegalArgumentException("Nome do time não pode ser vazio");
         }
+
+        // Bloqueia cadastro se já houver partidas registradas (competição em andamento)
+        if (!this.partidas.isEmpty()) {
+            throw new IllegalArgumentException("Não é possível adicionar time após o início da competição");
+        }
+
         // verifica duplicidade por nome (case-insensitive)
         if (times.stream().anyMatch(t -> t.getNome().equalsIgnoreCase(nome))) {
             throw new IllegalArgumentException("Nome do time já cadastrado");
@@ -92,11 +98,13 @@ public class Campeonato {
      * RF04: Atualização Automática de Atributos (Cálculo 3-1-0)
      * RN15: Times diferentes em uma partida
      */
-    public void registrarResultado(String nomeTimeA, String nomeTimeB, 
-                                  int golsA, int golsB, int caA, int cvA, int caB, int cvB) {
+    public void registrarResultado(String nomeTimeA, String nomeTimeB,
+                                   Integer golsA, Integer golsB, int caA, int cvA, int caB, int cvB) {
         if (nomeTimeA == null || nomeTimeB == null) throw new IllegalArgumentException("Nomes de times inválidos");
         if (nomeTimeA.equalsIgnoreCase(nomeTimeB)) throw new IllegalArgumentException("Um time não pode jogar contra si mesmo");
         // valida não-negativos
+        if (golsA == null || golsB == null)
+            throw new IllegalArgumentException("Placar deve ser preenchido");
         if (golsA < 0 || golsB < 0) throw new IllegalArgumentException("Valor de gols deve ser não negativo");
         if (caA < 0 || caB < 0 || cvA < 0 || cvB < 0) throw new IllegalArgumentException("Cartões não podem ser negativos");
 
@@ -280,7 +288,7 @@ public class Campeonato {
     public boolean gerarTabelaJogos() {
         // RN12: Verificar se o número de times é par
         if (times.size() % 2 != 0) {
-            throw new IllegalStateException("O número de times deve ser par");
+            throw new IllegalArgumentException("O número de times deve ser par");
         }
 
         if (times.isEmpty()) {

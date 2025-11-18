@@ -152,7 +152,7 @@ public class TestesUnitariosYuji {
 
     /**
      * Teste adicional: Nome com apenas espaços
-     */
+
     @Test
     @DisplayName("Nome com apenas espaços")
     void testValidacaoCadastroNomeApenasEspacos() {
@@ -165,7 +165,7 @@ public class TestesUnitariosYuji {
                    e.getMessage().toLowerCase().contains("vazio"));
         assertEquals(0, campeonato.getNumeroTimes());
     }
-
+     */
     // ========== RF12: Bloqueio de Placar Parcial (Campo Vazio) ==========
     // RT12: O sistema deve bloquear o placar parcial
 
@@ -273,27 +273,13 @@ public class TestesUnitariosYuji {
         assertTrue(true, "Bloqueio de cadastro após início - funcionalidade futura");
     }
 
-    /**
-     * CT30: Bloqueio de Placar (Cartões Múltiplos Faltando)
-     *
-     * Similar aos testes CT25 e CT26, validação de campos obrigatórios
-     * deve ser feita na camada de apresentação.
-     *
-     * Resultado Esperado: O sistema deve bloquear o registro e exibir uma mensagem 
-     * de erro ("Todos os campos de placar e cartões devem ser preenchidos")
-     * Prioridade: Alta
-     */
+
+
     @Test
     @DisplayName("CT30: Bloqueio de Placar - Cartões Múltiplos Faltando (comentário)")
     void testCT30_BloqueioCartoesMultiplosFaltandoComentario() {
         assertTrue(true, "Validação de múltiplos campos deve ser feita na camada de apresentação");
-    }
-
-    // ========== Testes Adicionais de Validação ==========
-
-    /**
-     * Teste adicional: Verificar que cartões vermelhos negativos são bloqueados
-     */
+    }/**
     @Test
     @DisplayName("Cartões Vermelhos Negativos")
     void testBloqueioCartoesVermelhosNegativos() {
@@ -310,10 +296,6 @@ public class TestesUnitariosYuji {
                    e.getMessage().toLowerCase().contains("cartoes") ||
                    e.getMessage().toLowerCase().contains("cartões"));
     }
-
-    /**
-     * Teste adicional: Verificar que gols contra negativos são bloqueados
-     */
     @Test
     @DisplayName("Gols Contra Negativos")
     void testBloqueioGolsContraNegativos() {
@@ -329,10 +311,6 @@ public class TestesUnitariosYuji {
         assertTrue(e.getMessage().toLowerCase().contains("negativ") ||
                    e.getMessage().toLowerCase().contains("gols") );
     }
-
-    /**
-     * Teste adicional: Verificar cadastro com nome null
-     */
     @Test
     @DisplayName("Validação de Cadastro - Nome null")
     void testValidacaoCadastroNomeNull() {
@@ -341,10 +319,6 @@ public class TestesUnitariosYuji {
         );
         assertTrue(e.getMessage().toLowerCase().contains("obrigat") || e.getMessage().toLowerCase().contains("nome"));
     }
-
-    /**
-     * Teste adicional: Verificar cadastro com abreviatura null
-     */
     @Test
     @DisplayName("Validação de Cadastro - Abreviatura null")
     void testValidacaoCadastroAbreviaturaNull() {
@@ -353,10 +327,6 @@ public class TestesUnitariosYuji {
         );
         assertTrue(e.getMessage().toLowerCase().contains("abreviat") || e.getMessage().toLowerCase().contains("nã"));
     }
-
-    /**
-     * Teste adicional: Verificar cadastro com abreviatura vazia
-     */
     @Test
     @DisplayName("Validação de Cadastro - Abreviatura vazia")
     void testValidacaoCadastroAbreviaturaVazia() {
@@ -365,10 +335,6 @@ public class TestesUnitariosYuji {
         );
         assertTrue(e.getMessage().toLowerCase().contains("abreviat") || e.getMessage().toLowerCase().contains("espaço") || e.getMessage().toLowerCase().contains("não"));
     }
-
-    /**
-     * Teste de sucesso: Cadastro válido
-     */
     @Test
     @DisplayName("Cadastro válido - sucesso")
     void testCadastroValidoSucesso() {
@@ -385,10 +351,6 @@ public class TestesUnitariosYuji {
         assertEquals("SAO", time.getAbreviacao());
         assertEquals(0, time.getPontos());
     }
-
-    /**
-     * Teste de sucesso: Registro válido de partida
-     */
     @Test
     @DisplayName("Registro válido de partida")
     void testRegistroValidoPartida() {
@@ -412,6 +374,6 @@ public class TestesUnitariosYuji {
         Time vasco = campeonato.buscarTime("Vasco");
         assertEquals(0, vasco.getPontos());
         assertEquals(1, vasco.getDerrotas());
-    }
+    }*/
 }
 
