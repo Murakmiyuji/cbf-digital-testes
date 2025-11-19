@@ -1,8 +1,8 @@
 package br.com.arenacontrole;
 
-import java.util.List; // { changed code }
-import java.util.ArrayList; // { changed code }
-import br.com.arenacontrole.repository.CampeonatoRepository; // { changed code }
+import java.util.List; 
+import java.util.ArrayList; 
+import br.com.arenacontrole.repository.CampeonatoRepository; 
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
  * Implementa as regras RN04, RN05, RN07, RN12-RN16 do Plano de Testes.
  */
 public class Campeonato {
-    private List<Time> times = new ArrayList<>(); // { changed code }
+    private List<Time> times = new ArrayList<>(); 
     private boolean tabelaGerada;
     private int totalGols;
     private final List<Partida> partidas = new ArrayList<>();
     // repositório opcional para persistência
-    private CampeonatoRepository repository; // { changed code }
-    private String status = "Em Andamento"; // { changed code }
+    private CampeonatoRepository repository; 
+    private String status = "Em Andamento"; 
 
     // garante construtor padrão (compatibilidade com testes existentes)
     public Campeonato() {
@@ -28,12 +28,12 @@ public class Campeonato {
     public Campeonato(CampeonatoRepository repository) {
         this(); // chama construtor padrão para manter comportamento anterior
         this.repository = repository;
-    } // { changed code }
+    } 
 
     // setter opcional
-    public void setRepository(CampeonatoRepository repository) { // { changed code }
+    public void setRepository(CampeonatoRepository repository) { 
         this.repository = repository;
-    } // { changed code }
+    } 
 
     /**
      * Cadastra um novo time no campeonato.
