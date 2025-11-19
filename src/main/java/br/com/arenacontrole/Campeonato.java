@@ -172,7 +172,7 @@ public class Campeonato {
         // atualiza estatística local
         totalGols += golsA + golsB;
 
-        // Verificar se tabela está completa (todas as partidas de round-robin registradas)
+        // Verificar se tabela está completa (todas as partidas de turno e returno registradas)
         if (verificarTabelaCompleta()) {
             this.status = "Finalizado";
         }
@@ -409,16 +409,16 @@ public class Campeonato {
     }
 
     /**
-     * Verifica se todas as partidas foram registradas em um campeonato round-robin
-     * Total esperado = N*(N-1)/2 para N times
+     * Verifica se todas as partidas foram registradas em um campeonato turno e returno
+     * Total esperado = N*(N-1) para N times (cada time joga contra todos os outros em ida e volta)
      * Retorna true se o número de partidas registradas >= total esperado
      */
     private boolean verificarTabelaCompleta() {
         int numeroTimes = getNumeroTimes();
         if (numeroTimes < 2) return false;
 
-        // Total esperado de partidas em round-robin
-        int totalPartidasEsperadas = (numeroTimes * (numeroTimes - 1)) / 2;
+        // Total esperado de partidas em turno e returno (ida e volta)
+        int totalPartidasEsperadas = numeroTimes * (numeroTimes - 1);
 
         // Contar partidas registradas (soma de jogos de todos os times dividido por 2)
         int totalJogosRegistrados = 0;

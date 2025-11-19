@@ -65,9 +65,9 @@ O projeto de testes automatizados para o CBF Digital foi **concluído com sucess
 
 **Requisitos Cobertos**:
 - RF13: Cálculo Total de Gols do Campeonato
-- RF14: Obtenção de Atributos Específicos
-- RF15: Bloqueio de Times Ímpares
-- RF16: Consulta de Estatísticas
+- RF14: Bloqueio de Cadastro de Times no Meio do Campeonato
+- RF15: Bloqueio de Times Ímpares (Geração de Tabela)
+- RF16: Mensagem de Tabela Completa (Notificação)
 
 ---
 
@@ -241,10 +241,10 @@ Total: ~10-15 segundos
 | RF10 | Bloqueio Times Duplicados | 100% | CT23, CT50 |
 | RF11 | Validação de Cadastro | 100% | CT24-CT26 |
 | RF12 | Timestamps | 100% | (Validação Interna) |
-| RF13 | Total de Gols | 100% | CT27 |
-| RF14 | Obtenção de Atributos | 100% | CT30-CT40 |
-| RF15 | Bloqueio Times Ímpares | 100% | CT29 |
-| RF16 | Estatísticas | 100% | CT31-CT40 |
+| RF13 | Total de Gols | 100% | CT27, CT31-CT32 |
+| RF14 | Bloqueio Cadastro no Meio | 100% | CT33-CT34 |
+| RF15 | Bloqueio Times Ímpares | 100% | CT29, CT35-CT37 |
+| RF16 | Mensagem Tabela Completa | 100% | CT38-CT40 |
 
 ### 6.2 Matriz de Rastreabilidade (Requirements Traceability Matrix)
 
@@ -261,10 +261,10 @@ RF09 ←→ CT21-CT22 ✅
 RF10 ←→ CT23, CT50 ✅
 RF11 ←→ CT24-CT26 ✅
 RF12 ←→ (Validação Interna) ✅
-RF13 ←→ CT27 ✅
-RF14 ←→ CT30-CT40 ✅
-RF15 ←→ CT29 ✅
-RF16 ←→ CT31-CT40 ✅
+RF13 ←→ CT27, CT31-CT32 ✅
+RF14 ←→ CT33-CT34 ✅
+RF15 ←→ CT29, CT35-CT37 ✅
+RF16 ←→ CT38-CT40 ✅
 ```
 
 ---

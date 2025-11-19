@@ -199,9 +199,9 @@ public class TestesIntegracaoCaio {
      * Verifica que o sistema exibe notificação ao finalizar todos os jogos
      * 
      * Entradas:
-     * - 4 times cadastrados, tabela gerada (6 jogos possíveis em round-robin)
-     * - Registrar 5 primeiros jogos
-     * - Registrar 6º e último jogo
+     * - 4 times cadastrados, tabela gerada (12 jogos possíveis em turno e returno)
+     * - Registrar 11 primeiros jogos (6 turno + 5 returno)
+     * - Registrar 12º e último jogo (returno)
      *
      * Resultado Esperado:
      * - Após registro do último jogo, status muda para "Finalizado"
@@ -219,28 +219,38 @@ public class TestesIntegracaoCaio {
         campeonato.cadastrarTime("Time Q", "TQ");
         campeonato.cadastrarTime("Time R", "TR");
         campeonato.cadastrarTime("Time S", "TS");
+        
+        campeonato.gerarTabelaJogos();
 
-        // Registrar 5 jogos (deixando 1 pendente de 6 possíveis em 4 times)
-        // Round-robin: (4 × 3) / 2 = 6 jogos totais
+        // Registrar 11 jogos (deixando 1 pendente de 12 possíveis em turno e returno)
+        // TURNO (Ida) - 6 jogos
         campeonato.registrarResultado("Time P", "Time Q", 1, 0, 0, 0, 0, 0); // Jogo 1
         campeonato.registrarResultado("Time P", "Time R", 2, 1, 0, 0, 0, 0); // Jogo 2
         campeonato.registrarResultado("Time P", "Time S", 3, 0, 0, 0, 0, 0); // Jogo 3
         campeonato.registrarResultado("Time Q", "Time R", 1, 1, 0, 0, 0, 0); // Jogo 4
         campeonato.registrarResultado("Time Q", "Time S", 2, 0, 0, 0, 0, 0); // Jogo 5
+        campeonato.registrarResultado("Time R", "Time S", 1, 2, 0, 0, 0, 0); // Jogo 6
+        
+        // RETORNO (Volta) - 5 jogos (faltando 1)
+        campeonato.registrarResultado("Time Q", "Time P", 0, 1, 0, 0, 0, 0); // Jogo 7
+        campeonato.registrarResultado("Time R", "Time P", 1, 0, 0, 0, 0, 0); // Jogo 8
+        campeonato.registrarResultado("Time S", "Time P", 2, 1, 0, 0, 0, 0); // Jogo 9
+        campeonato.registrarResultado("Time R", "Time Q", 0, 0, 0, 0, 0, 0); // Jogo 10
+        campeonato.registrarResultado("Time S", "Time Q", 1, 1, 0, 0, 0, 0); // Jogo 11
 
-        // Act: Registrar último jogo (6º)
-        campeonato.registrarResultado("Time R", "Time S", 1, 2, 0, 0, 0, 0); // Jogo 6 - FINAL
+        // Act: Registrar último jogo (12º - returno)
+        campeonato.registrarResultado("Time S", "Time R", 2, 0, 0, 0, 0, 0); // Jogo 12 - FINAL
 
         // Assert: Verificar que campeonato foi marcado como finalizado
         // Nota: Isso depende de implementação em Campeonato.java
         // O status deve ser consultável ou verificável no BD
         assertEquals(4, campeonato.getNumeroTimes(), "Campeonato deve manter 4 times");
         
-        // Verificar que todos os times têm 3 jogos (completo em 4 times round-robin)
+        // Verificar que todos os times têm 6 jogos (completo em 4 times turno e returno)
         Time timeP = repo.findTimeByNome("Time P");
-        assertEquals(3, timeP.getJogos(), "Time P deve ter 3 jogos (todos os confrontos)");
+        assertEquals(6, timeP.getJogos(), "Time P deve ter 6 jogos (turno e returno completos)");
         
         Time timeQ = repo.findTimeByNome("Time Q");
-        assertEquals(3, timeQ.getJogos(), "Time Q deve ter 3 jogos (todos os confrontos)");
+        assertEquals(6, timeQ.getJogos(), "Time Q deve ter 6 jogos (turno e returno completos)");
     }
 }

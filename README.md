@@ -104,16 +104,16 @@ cbf-digital-testes/
 #### 🔴 Caio Negrelli Fontalva (CT31-CT40)
 | Caso | Título | RF | Status |
 |------|--------|-----|--------|
-| CT31 | Obtenção de Atributo por Campo Padrão | RF14 | ✅ |
-| CT32 | Obtenção de Pontos Obtidos | RF14 | ✅ |
-| CT33 | Obtenção de Jogos Realizados | RF14 | ✅ |
-| CT34 | Obtenção de Vitórias | RF14 | ✅ |
-| CT35 | Obtenção de Empates | RF14 | ✅ |
-| CT36 | Obtenção de Derrotas | RF14 | ✅ |
-| CT37 | Obtenção de Gols Pró | RF14 | ✅ |
-| CT38 | Obtenção de Gols Contra | RF14 | ✅ |
-| CT39 | Obtenção de Saldo de Gols | RF14 | ✅ |
-| CT40 | Obtenção de Cartões | RF14 | ✅ |
+| CT31 | Cálculo de Total de Gols (Partida Única) | RF13 | ✅ |
+| CT32 | Cálculo de Total de Gols (Acúmulo) | RF13 | ✅ |
+| CT33 | Bloqueio de Cadastro no Meio do Campeonato | RF14 | ✅ |
+| CT34 | Permitir Cadastro de Times (Sem Partidas) | RF14 | ✅ |
+| CT35 | Bloqueio de Times Ímpares (3 Times) | RF15 | ✅ |
+| CT36 | Bloqueio de Times Ímpares (21 Times) | RF15 | ✅ |
+| CT37 | Permissão de Times Pares (4 Times) | RF15 | ✅ |
+| CT38 | Mensagem de Tabela Completa | RF16 | ✅ |
+| CT39 | Mensagem de Tabela Incompleta | RF16 | ✅ |
+| CT40 | Bloqueio de Cadastro (Campeonato Finalizado) | RF16 | ✅ |
 
 ### Testes de Integração com PostgreSQL (CT41-CT56)
 

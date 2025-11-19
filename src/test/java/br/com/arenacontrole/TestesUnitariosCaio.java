@@ -184,8 +184,8 @@ public class TestesUnitariosCaio {
 
     /**
      * CT38: Mensagem de Tabela Completa
-     * Pré-condição: 4 Times, Tabela gerada, Todos os 6 jogos registrados (round-robin)
-     * Entrada: registrarResultado (último jogo)
+     * Pré-condição: 4 Times, Tabela gerada (12 jogos - turno e returno), 11 jogos já registrados
+     * Entrada: registrarResultado (último jogo - 12º)
      * Resultado Esperado: Sistema marca status = "Finalizado"
      */
     @Test
@@ -198,28 +198,37 @@ public class TestesUnitariosCaio {
         
         campeonato.gerarTabelaJogos();
         
-        // Registrar 5 primeiras partidas (faltando 1 de 6 possíveis em 4 times round-robin)
+        // Registrar 11 partidas de 12 (turno e returno)
+        // TURNO (Ida) - 6 jogos
         campeonato.registrarResultado("A", "B", 1, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("A", "C", 1, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("A", "D", 1, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("B", "C", 0, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("B", "D", 1, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("C", "D", 2, 1, 0, 0, 0, 0);
+        
+        // RETORNO (Volta) - 5 jogos (faltando 1)
+        campeonato.registrarResultado("B", "A", 2, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("C", "A", 0, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("D", "A", 1, 2, 0, 0, 0, 0);
+        campeonato.registrarResultado("C", "B", 1, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("D", "B", 0, 0, 0, 0, 0, 0);
         
         // Antes da última, status ainda é "Em Andamento"
         assertEquals("Em Andamento", campeonato.obterStatus(), 
-                    "Status deve ser 'Em Andamento' antes de completar");
+                    "Status deve ser 'Em Andamento' antes de completar (11 de 12 jogos)");
         
-        // Registrar última partida (6ª)
-        campeonato.registrarResultado("C", "D", 2, 1, 0, 0, 0, 0);
+        // Registrar última partida (12º jogo - D x C no returno)
+        campeonato.registrarResultado("D", "C", 1, 0, 0, 0, 0, 0);
         
         // Verificar que status mude para "Finalizado"
         assertEquals("Finalizado", campeonato.obterStatus(), 
-                    "Status deve ser 'Finalizado' após completar todas as partidas");
+                    "Status deve ser 'Finalizado' após completar todas as 12 partidas (turno e returno)");
     }
 
     /**
      * CT39: Mensagem de Tabela Incompleta
-     * Pré-condição: 4 Times, Tabela gerada, 5 jogos registrados (faltando 1)
+     * Pré-condição: 4 Times, Tabela gerada (12 jogos - turno e returno), 9 jogos registrados
      * Entrada: Verificação de status
      * Resultado Esperado: Sistema exibe status = "Em Andamento", NÃO "Finalizado"
      */
@@ -233,16 +242,23 @@ public class TestesUnitariosCaio {
         
         campeonato.gerarTabelaJogos();
         
-        // Registrar apenas 5 partidas (faltando 1)
+        // Registrar apenas 9 partidas de 12 (turno e returno - faltando 3)
+        // TURNO (Ida) - 6 jogos
         campeonato.registrarResultado("A", "B", 1, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("A", "C", 1, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("A", "D", 1, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("B", "C", 0, 0, 0, 0, 0, 0);
         campeonato.registrarResultado("B", "D", 1, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("C", "D", 2, 1, 0, 0, 0, 0);
         
-        // Status deve ser "Em Andamento" (ainda faltam jogos)
+        // RETORNO (Volta) - 3 jogos (faltando 3)
+        campeonato.registrarResultado("B", "A", 2, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("C", "A", 0, 1, 0, 0, 0, 0);
+        campeonato.registrarResultado("D", "A", 1, 2, 0, 0, 0, 0);
+        
+        // Status deve ser "Em Andamento" (ainda faltam 3 jogos)
         assertEquals("Em Andamento", campeonato.obterStatus(), 
-                    "Status deve ser 'Em Andamento' quando há jogos pendentes");
+                    "Status deve ser 'Em Andamento' quando há jogos pendentes (9 de 12 jogos registrados)");
     }
 
     /**
