@@ -17,6 +17,7 @@ public class Campeonato {
     private final List<Partida> partidas = new ArrayList<>();
     // repositório opcional para persistência
     private CampeonatoRepository repository; // { changed code }
+    private String status = "Em Andamento"; // { changed code }
 
     // garante construtor padrão (compatibilidade com testes existentes)
     public Campeonato() {
@@ -47,6 +48,11 @@ public class Campeonato {
         // Bloqueia cadastro se já houver partidas registradas (competição em andamento)
         if (!this.partidas.isEmpty()) {
             throw new IllegalArgumentException("Não é possível adicionar time após o início da competição");
+        }
+
+        // Bloqueia cadastro se campeonato foi finalizado
+        if ("Finalizado".equals(this.status)) {
+            throw new IllegalArgumentException("Não é possível adicionar times em um campeonato finalizado");
         }
 
         // verifica duplicidade por nome (case-insensitive)
@@ -165,6 +171,11 @@ public class Campeonato {
 
         // atualiza estatística local
         totalGols += golsA + golsB;
+
+        // Verificar se tabela está completa (todas as partidas de round-robin registradas)
+        if (verificarTabelaCompleta()) {
+            this.status = "Finalizado";
+        }
     }
 
     public void editarResultado(String nomeTimeA, String nomeTimeB,
@@ -387,6 +398,36 @@ public class Campeonato {
 
     public boolean isTabelaGerada() {
         return tabelaGerada;
+    }
+
+    public String obterStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String novoStatus) {
+        this.status = novoStatus;
+    }
+
+    /**
+     * Verifica se todas as partidas foram registradas em um campeonato round-robin
+     * Total esperado = N*(N-1)/2 para N times
+     * Retorna true se o número de partidas registradas >= total esperado
+     */
+    private boolean verificarTabelaCompleta() {
+        int numeroTimes = getNumeroTimes();
+        if (numeroTimes < 2) return false;
+
+        // Total esperado de partidas em round-robin
+        int totalPartidasEsperadas = (numeroTimes * (numeroTimes - 1)) / 2;
+
+        // Contar partidas registradas (soma de jogos de todos os times dividido por 2)
+        int totalJogosRegistrados = 0;
+        for (Time time : times) {
+            totalJogosRegistrados += time.getJogos();
+        }
+        int totalPartidasRegistradas = totalJogosRegistrados / 2;
+
+        return totalPartidasRegistradas >= totalPartidasEsperadas;
     }
 }
 
