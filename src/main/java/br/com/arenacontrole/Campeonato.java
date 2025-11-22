@@ -105,7 +105,7 @@ public class Campeonato {
      * RN15: Times diferentes em uma partida
      */
     public void registrarResultado(String nomeTimeA, String nomeTimeB,
-                                   Integer golsA, Integer golsB, int caA, int cvA, int caB, int cvB) {
+                                   Integer golsA, Integer golsB, Integer caA, Integer cvA, Integer caB, Integer cvB) {
         if (nomeTimeA == null || nomeTimeB == null) throw new IllegalArgumentException("Nomes de times inválidos");
         if (nomeTimeA.equalsIgnoreCase(nomeTimeB)) throw new IllegalArgumentException("Um time não pode jogar contra si mesmo");
         // valida não-negativos
