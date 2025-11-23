@@ -250,7 +250,7 @@ try:
         )
 
         assert len(produto_carrinho) > 0, "Nenhum item relacionado a 'Nike' foi encontrado no carrinho."
-        
+
     except Exception as e:
         print("Erro ao checar o carrinho:", e)
 
