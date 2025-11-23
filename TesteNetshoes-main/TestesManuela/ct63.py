@@ -191,6 +191,8 @@ try:
     print("Produto encontrado. Info:")
     info_element(navegador, tenis_elem)
 
+    assert tenis_elem.is_displayed(), "Produto não está visível na listagem para ser selecionado."
+
     navegador.execute_script("arguments[0].scrollIntoView({block:'center'});", tenis_elem)
     time.sleep(0.6)
     close_known_popups(navegador)
@@ -234,9 +236,21 @@ try:
     time.sleep(3)
 
     print("URL atual:", navegador.current_url)
+
+    assert "cart" in navegador.current_url, "Usuário não foi direcionado para a página de carrinho."
+
     try:
         cart_marker = navegador.find_elements(By.XPATH, "//*[contains(text(),'Carrinho') or contains(text(),'Meu carrinho') or contains(@class,'cart')]")
         print("Verificação simples por texto/classes no /cart - encontrados:", len(cart_marker))
+
+        assert len(cart_marker) > 0, "Nenhum indicador visual de carrinho foi encontrado na página."
+
+        produto_carrinho = navegador.find_elements(
+            By.XPATH, "//*[contains(translate(text(),'NIKE','nike'),'nike')]"
+        )
+
+        assert len(produto_carrinho) > 0, "Nenhum item relacionado a 'Nike' foi encontrado no carrinho."
+        
     except Exception as e:
         print("Erro ao checar o carrinho:", e)
 
