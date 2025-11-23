@@ -37,7 +37,7 @@ try:
 
     assert "nike" in navegador.current_url.lower() or "tenis" in navegador.current_url.lower(), \
         "O usuário não permaneceu na página de detalhes do produto."
-        
+
     print("teste validado")
     
 except Exception as erro:
