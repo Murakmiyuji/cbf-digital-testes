@@ -1,8 +1,8 @@
 package br.com.arenacontrole;
 
-import java.util.List; 
-import java.util.ArrayList; 
-import br.com.arenacontrole.repository.CampeonatoRepository; 
+import java.util.List; // { changed code }
+import java.util.ArrayList; // { changed code }
+import br.com.arenacontrole.repository.CampeonatoRepository; // { changed code }
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
  * Implementa as regras RN04, RN05, RN07, RN12-RN16 do Plano de Testes.
  */
 public class Campeonato {
-    private List<Time> times = new ArrayList<>(); 
+    private List<Time> times = new ArrayList<>(); // { changed code }
     private boolean tabelaGerada;
     private int totalGols;
     private final List<Partida> partidas = new ArrayList<>();
     // repositório opcional para persistência
-    private CampeonatoRepository repository; 
-    private String status = "Em Andamento"; 
+    private CampeonatoRepository repository; // { changed code }
+    private String status = "Em Andamento"; // { changed code }
 
     // garante construtor padrão (compatibilidade com testes existentes)
     public Campeonato() {
@@ -28,12 +28,12 @@ public class Campeonato {
     public Campeonato(CampeonatoRepository repository) {
         this(); // chama construtor padrão para manter comportamento anterior
         this.repository = repository;
-    } 
+    } // { changed code }
 
     // setter opcional
-    public void setRepository(CampeonatoRepository repository) { 
+    public void setRepository(CampeonatoRepository repository) { // { changed code }
         this.repository = repository;
-    } 
+    } // { changed code }
 
     /**
      * Cadastra um novo time no campeonato.
@@ -105,7 +105,7 @@ public class Campeonato {
      * RN15: Times diferentes em uma partida
      */
     public void registrarResultado(String nomeTimeA, String nomeTimeB,
-                                   Integer golsA, Integer golsB, Integer caA, Integer cvA, Integer caB, Integer cvB) {
+                                   Integer golsA, Integer golsB, int caA, int cvA, int caB, int cvB) {
         if (nomeTimeA == null || nomeTimeB == null) throw new IllegalArgumentException("Nomes de times inválidos");
         if (nomeTimeA.equalsIgnoreCase(nomeTimeB)) throw new IllegalArgumentException("Um time não pode jogar contra si mesmo");
         // valida não-negativos
@@ -172,7 +172,7 @@ public class Campeonato {
         // atualiza estatística local
         totalGols += golsA + golsB;
 
-        // Verificar se tabela está completa (todas as partidas de turno e returno registradas)
+        // Verificar se tabela está completa (todas as partidas de round-robin registradas)
         if (verificarTabelaCompleta()) {
             this.status = "Finalizado";
         }
@@ -409,16 +409,16 @@ public class Campeonato {
     }
 
     /**
-     * Verifica se todas as partidas foram registradas em um campeonato turno e returno
-     * Total esperado = N*(N-1) para N times (cada time joga contra todos os outros em ida e volta)
+     * Verifica se todas as partidas foram registradas em um campeonato round-robin
+     * Total esperado = N*(N-1)/2 para N times
      * Retorna true se o número de partidas registradas >= total esperado
      */
     private boolean verificarTabelaCompleta() {
         int numeroTimes = getNumeroTimes();
         if (numeroTimes < 2) return false;
 
-        // Total esperado de partidas em turno e returno (ida e volta)
-        int totalPartidasEsperadas = numeroTimes * (numeroTimes - 1);
+        // Total esperado de partidas em round-robin
+        int totalPartidasEsperadas = (numeroTimes * (numeroTimes - 1)) / 2;
 
         // Contar partidas registradas (soma de jogos de todos os times dividido por 2)
         int totalJogosRegistrados = 0;

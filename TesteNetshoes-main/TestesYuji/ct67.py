@@ -35,6 +35,10 @@ try:
     valormaximo.clear()
     valormaximo.send_keys("100")
 
+    # Asserts para validar que os campos foram preenchidos corretamente
+    assert preco is not None and preco.is_displayed(), "Filtro 'Preço' deve estar visível"
+    assert valorminimo.get_attribute('value') == '50', "Valor mínimo deve ser 50"
+    assert valormaximo.get_attribute('value') == '100', "Valor máximo deve ser 100"
     print("teste validado")
 
 except Exception as erro:

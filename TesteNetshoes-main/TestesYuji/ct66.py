@@ -22,9 +22,14 @@ try:
     masculino = WebDriverWait(navegador, 20).until(
         EC.element_to_be_clickable((By.ID, "genero-Masculino"))
     )
+    assert masculino.is_displayed(), "Filtro 'Masculino' deve estar visível"
     navegador.execute_script("arguments[0].click();", masculino) 
 
     time.sleep(5)
+
+    # Verifica que existem produtos após aplicar o filtro
+    produtos = navegador.find_elements(By.XPATH, "//a[contains(@href,'tenis') or contains(@href,'tenis-')]")
+    assert len(produtos) > 0, "Devem existir produtos listados após aplicar o filtro 'Masculino'"
 
     print("teste validado")
 

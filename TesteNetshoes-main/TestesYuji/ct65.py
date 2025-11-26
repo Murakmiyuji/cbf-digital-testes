@@ -191,6 +191,16 @@ try:
 
     print("✅ Clique no botão PIX executado com sucesso!")
 
+    # ======= Asserts para validar o fluxo =======
+    # Verifica que o botão PIX foi encontrado
+    assert botao_pix is not None, "Botão de finalização com PIX deve ser encontrado"
+
+    # Verifica que o clique funcionou
+    assert ok is True, "Clique no botão PIX deve ser bem-sucedido"
+
+    # Verifica que estamos na página de checkout ou carrinho
+    assert ("cart" in driver.current_url or "checkout" in driver.current_url), "URL deve indicar carrinho/checkout após adicionar o produto"
+
     time.sleep(6)
 
     print("TESTE FINALIZADO")
