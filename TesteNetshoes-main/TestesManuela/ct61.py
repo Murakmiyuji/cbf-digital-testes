@@ -24,6 +24,20 @@ try:
 
     time.sleep(10)
 
+    nome_produto = navegador.find_element(By.TAG_NAME, "h1")
+    assert nome_produto.is_displayed(), "Nome do produto não está visível na página de detalhes."
+
+    imagens = navegador.find_elements(By.TAG_NAME, "img")
+    assert len(imagens) > 0, "Nenhuma imagem foi encontrada na página de detalhes do produto."
+
+    precos = navegador.find_elements(
+        By.XPATH, "//*[contains(@class, 'price') or contains(@class, 'preco')]"
+    )
+    assert len(precos) > 0, "Não foi encontrado nenhum elemento que aparente ser o preço do produto."
+
+    assert "nike" in navegador.current_url.lower() or "tenis" in navegador.current_url.lower(), \
+        "O usuário não permaneceu na página de detalhes do produto."
+
     print("teste validado")
     
 except Exception as erro:

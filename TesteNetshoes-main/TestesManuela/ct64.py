@@ -184,6 +184,9 @@ try:
     print("Procurando produto...")
     tenis_elem = wait.until(EC.presence_of_element_located((By.XPATH, produto_xpath)))
     info_element(navegador, tenis_elem)
+
+    assert tenis_elem.is_displayed(), "Produto não está visível na listagem para ser adicionado ao carrinho."
+
     navegador.execute_script("arguments[0].scrollIntoView({block:'center'});", tenis_elem)
     close_known_popups(navegador)
     robust_click_with_debug(navegador, tenis_elem, name="produto")
@@ -213,9 +216,18 @@ try:
 
     print("URL atual:", navegador.current_url)
 
+    assert "cart" in navegador.current_url, "Usuário não foi direcionado para a página de carrinho após adicionar o produto."
+
     print("\n=== PROCURANDO BOTÃO DE REMOVER PRODUTO ===")
 
     try:
+        produtos_no_carrinho_antes = navegador.find_elements(
+            By.XPATH, "//i[@aria-label='remover produto']"
+        )
+        print("Quantidade de itens removíveis ANTES:", len(produtos_no_carrinho_antes))
+
+        assert len(produtos_no_carrinho_antes) > 0, "Nenhum item foi encontrado no carrinho para remoção."
+
         remove_btn = WebDriverWait(navegador, 12).until(
             EC.presence_of_element_located((
                 By.XPATH,
@@ -233,6 +245,14 @@ try:
         robust_click_with_debug(navegador, remove_btn, name="remove_produto")
 
         time.sleep(2)
+
+        produtos_no_carrinho_depois = navegador.find_elements(
+            By.XPATH, "//i[@aria-label='remover produto']"
+        )
+        print("Quantidade de itens removíveis DEPOIS:", len(produtos_no_carrinho_depois))
+
+        assert len(produtos_no_carrinho_depois) < len(produtos_no_carrinho_antes), \
+            "Item não foi removido corretamente do carrinho."
 
     except Exception as e:
         print("❌ Erro ao remover:", e)
