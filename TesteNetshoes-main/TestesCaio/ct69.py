@@ -1,16 +1,33 @@
-@Test
-public void testCT69_DetalhesProduto() {
-    driver.get("https://www.netshoes.com.br");
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
 
-WebElement search = driver.findElement(By.name("q"));
-search.sendKeys("tenis masculino");
-search.sendKeys(Keys.ENTER);
+def test_CT69_detalhes_produto():
+    navegador = None
+    try:
+        navegador = webdriver.Chrome()
+        navegador.get("https://www.netshoes.com.br")
+        navegador.maximize_window()
 
-WebElement firstProduct = driver.findElement(By.cssSelector("a.item-card__description"));
-firstProduct.click();
+        busca = navegador.find_element(By.NAME, "q")
+        busca.send_keys("tenis masculino")
+        busca.send_keys(Keys.ENTER)
 
-assertTrue(driver.findElement(By.cssSelector("h1[itemprop='name']")).isDisplayed());
-assertTrue(driver.findElement(By.cssSelector("img[itemprop='image']")).isDisplayed());
-assertTrue(driver.findElement(By.cssSelector("span.price")).isDisplayed());
-assertTrue(driver.findElement(By.cssSelector("button.buy-button")).isDisplayed());
-}
+        time.sleep(3)
+
+        primeiro = navegador.find_element(By.CSS_SELECTOR, "a.item-card__description")
+        primeiro.click()
+
+        time.sleep(3)
+
+        assert navegador.find_element(By.CSS_SELECTOR, "h1[itemprop='name']").is_displayed()
+        assert navegador.find_element(By.CSS_SELECTOR, "img[itemprop='image']").is_displayed()
+        assert navegador.find_element(By.CSS_SELECTOR, "span.price").is_displayed()
+        assert navegador.find_element(By.CSS_SELECTOR, "button.buy-button").is_displayed()
+
+    finally:
+        if navegador:
+            navegador.quit()
+
+test_CT69_detalhes_produto()
