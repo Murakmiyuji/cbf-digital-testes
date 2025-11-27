@@ -418,7 +418,12 @@ public class Campeonato {
         if (numeroTimes < 2) return false;
 
         // Total esperado de partidas em round-robin
-        int totalPartidasEsperadas = (numeroTimes * (numeroTimes - 1)) / 2;
+        // CÓDIGO INCORRETO: Está calculando N*(N-1)/2 (Turno Único)
+        // int totalPartidasEsperadas = (numeroTimes * (numeroTimes - 1)) / 2;
+
+        // CÓDIGO CORRIGIDO: Assume Double Round-Robin (N * (N-1) partidas)
+        // Se 12 jogos é o total esperado, deve haver 4 times (4 * (4-1) = 12).
+        int totalPartidasEsperadas = numeroTimes * (numeroTimes - 1);
 
         // Contar partidas registradas (soma de jogos de todos os times dividido por 2)
         int totalJogosRegistrados = 0;
