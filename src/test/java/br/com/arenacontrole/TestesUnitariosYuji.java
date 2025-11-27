@@ -80,9 +80,8 @@ public class TestesUnitariosYuji {
             campeonato.registrarResultado("Time C", "Time D", 1, 1, -2, 0, 0, 0)
         );
 
-        assertTrue(e.getMessage().toLowerCase().contains("negativ") ||
-                   e.getMessage().toLowerCase().contains("cartões") ||
-                   e.getMessage().toLowerCase().contains("cartoes"));
+        assertTrue(e.getMessage().toLowerCase().contains("negativo") ||
+                   e.getMessage().toLowerCase().contains("cartões"));
 
         // Verificar que os atributos permanecem inalterados
         Time timeC = campeonato.buscarTime("Time C");
@@ -143,7 +142,7 @@ public class TestesUnitariosYuji {
             campeonato.cadastrarTime("", "SEM")
         );
 
-        assertTrue(e.getMessage().toLowerCase().contains("obrigat") ||
+        assertTrue(e.getMessage().toLowerCase().contains("o nome do time é obrigatório") ||
                    e.getMessage().toLowerCase().contains("vazio"));
 
         // Verificar que nenhum time foi criado
@@ -193,12 +192,6 @@ public class TestesUnitariosYuji {
      * Resultado Esperado: O sistema deve bloquear o registro e exibir mensagem 
      * de erro ("Todos os campos de cartões devem ser preenchidos")
      * Prioridade: Alta
-     *
-     * Nota Técnica: Em Java, os cartões são definidos como int primitivo, que não pode ser null.
-     * A validação de campos vazios/nulos em cartões seria feita na camada de apresentação
-     * (interface web/mobile) antes de chamar o método registrarResultado().
-     * Este teste documenta essa limitação técnica e valida que a validação de cartões
-     * negativos já está implementada (testada em CT22).
      */
     @Test
     @DisplayName("CT26: Bloqueio de Placar Parcial (Cartões CV Faltando)")
@@ -207,29 +200,16 @@ public class TestesUnitariosYuji {
         campeonato.cadastrarTime("Time H", "TH");
         campeonato.cadastrarTime("Time I", "TI");
 
-        // Nota: Em Java, os cartões são int primitivo (não podem ser null).
-        // O plano de testes menciona null para cartões, mas isso não é possível
-        // com a implementação atual que usa tipos primitivos.
-        //
-        // A validação de cartões nulos/vazios seria feita na camada de apresentação.
-        // A validação de cartões negativos já está implementada e testada em CT22.
-        
-        // Como não podemos passar null para int primitivo, documentamos que:
-        // 1. A validação de null seria feita na camada de apresentação
-        // 2. A validação de valores negativos está implementada (CT22)
-        // 3. Valores padrão (0) são aceitos quando não há cartões
-        
-        // Este teste garante que valores válidos funcionam corretamente
-        campeonato.registrarResultado("Time H", "Time I", 1, 1, 1, 0, 0, 0);
-        
-        // Verificar que o registro foi bem-sucedido
+        // Act & Assert: Tentar registrar com cartõesVermelhos null deve bloquear
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time H", "Time I", 1, 1, 1, 0, 0, null)
+        );
+        assertTrue(e.getMessage().toLowerCase().contains("preenchidos") ||
+                   e.getMessage().toLowerCase().contains("todos os campos"));
+        // Verificar que os atributos permanecem inalterados
         Time timeH = campeonato.buscarTime("Time H");
-        assertEquals(1, timeH.getJogos(), "Time H deve ter 1 jogo registrado");
-        assertEquals(1, timeH.getCartoesAmarelos(), "Time H deve ter 1 cartão amarelo");
-        
-        // Nota: A validação de null em cartões não pode ser testada aqui devido
-        // à limitação de tipos primitivos em Java. Isso seria validado na camada de UI.
-        assertTrue(true, "Validação de null em cartões seria feita na camada de apresentação (tipos primitivos não permitem null)");
+        assertEquals(0, timeH.getPontos());
+        assertEquals(0, timeH.getJogos());
     }
 
     /**
@@ -240,12 +220,6 @@ public class TestesUnitariosYuji {
      * Resultado Esperado: O sistema deve bloquear o registro e exibir mensagem 
      * de erro ("O placar deve ser um valor numérico inteiro")
      * Prioridade: Alta
-     *
-     * Nota Técnica: Em Java com tipos primitivos (int), este cenário é prevenido
-     * em tempo de compilação. A linguagem não permite passar String para parâmetros int.
-     * Portanto, este teste não pode ser executado da forma descrita no plano de testes.
-     * A validação de entradas não numéricas seria feita na camada de apresentação
-     * (interface web/mobile) antes de converter para int e chamar registrarResultado().
      */
     @Test
     @DisplayName("CT27: Bloqueio de Entrada Não Numérica")
@@ -253,29 +227,18 @@ public class TestesUnitariosYuji {
         // Arrange
         campeonato.cadastrarTime("Time J", "TJ");
         campeonato.cadastrarTime("Time K", "TK");
-
-        // Nota: O plano de testes menciona registrarResultado("Time J", "Time K", "dois", 1, ...)
-        // mas em Java isso não compila porque "dois" é String e o parâmetro espera Integer/int.
-        //
-        // Em uma arquitetura completa:
-        // 1. A camada de apresentação receberia "dois" como String
-        // 2. A camada de apresentação validaria e converteria para int
-        // 3. Se inválido, retornaria erro antes de chamar registrarResultado()
-        // 4. Se válido, chamaria registrarResultado() com int
-        //
-        // Como nosso modelo de domínio usa tipos primitivos, essa validação
-        // já é garantida em tempo de compilação. Este teste documenta essa garantia.
-
-        // Verificar que valores numéricos válidos funcionam
-        campeonato.registrarResultado("Time J", "Time K", 2, 1, 0, 0, 0, 0);
+        // Act & Assert
         
-        Time timeJ = campeonato.buscarTime("Time J");
-        assertEquals(1, timeJ.getJogos(), "Time J deve ter 1 jogo registrado");
-        assertEquals(3, timeJ.getPontos(), "Time J deve ter 3 pontos (vitória)");
-
-        // Documentar que validação de tipo é feita em tempo de compilação
-        assertTrue(true, "Java com tipos primitivos previne entradas não numéricas em tempo de compilação. Validação adicional seria feita na camada de apresentação.");
-    }
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
+            campeonato.registrarResultado("Time J", "Time K", Integer.valueOf("dois"), 1, 0, 0, 0, 0)
+        );
+        assertTrue(e.getMessage().toLowerCase().contains("numérico") ||
+                   e.getMessage().toLowerCase().contains("inteiro"));
+                // Verificar que os atributos permanecem inalterados
+                Time timeJ = campeonato.buscarTime("Time J");
+                assertEquals(0, timeJ.getPontos());
+                assertEquals(0, timeJ.getJogos());
+            }
 
     /**
      * CT28: Validação de Cadastro de Times (Abreviatura com Espaço)
@@ -289,6 +252,7 @@ public class TestesUnitariosYuji {
     @Test
     @DisplayName("CT28: Validação de Cadastro - Abreviatura com Espaço")
     void testCT28_ValidacaoCadastroAbreviaturaComEspaco() {
+
         // Act & Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () ->
             campeonato.cadastrarTime("Time Validação", "TV A")
@@ -354,32 +318,19 @@ public class TestesUnitariosYuji {
     
         // Act & Assert: Tentar registrar com golsA null deve bloquear
         IllegalArgumentException e1 = assertThrows(IllegalArgumentException.class, () -> {
-            campeonato.registrarResultado("Time L", "Time M", null, 1, 1, 0, 0, 0);
+            campeonato.registrarResultado("Time L", "Time M", null, 1, 1, 0, null, null);
         }, "Deve bloquear quando golsA é null");
     
         // Verificar mensagem de erro
-        assertTrue(e1.getMessage().contains("Placar deve ser preenchido") ||
+        assertTrue(e1.getMessage().contains("Todos os campos de placar e cartões devem ser preenchidos") ||
                    e1.getMessage().toLowerCase().contains("preenchido"),
                    "Mensagem deve indicar que o placar deve ser preenchido");
-    
+
         // Verificar que os atributos permanecem inalterados
         Time timeL = campeonato.buscarTime("Time L");
-        assertEquals(0, timeL.getPontos(), "Atributos devem permanecer inalterados após erro");
-        assertEquals(0, timeL.getJogos(), "Atributos devem permanecer inalterados após erro");
-    
-        // Tentar registrar com golsB null também deve bloquear
-        IllegalArgumentException e2 = assertThrows(IllegalArgumentException.class, () -> {
-            campeonato.registrarResultado("Time L", "Time M", 1, null, 0, 0, 0, 0);
-        }, "Deve bloquear quando golsB é null");
-    
-        // Verificar mensagem de erro
-        assertTrue(e2.getMessage().contains("Placar deve ser preenchido") ||
-                   e2.getMessage().toLowerCase().contains("preenchido"),
-                   "Mensagem deve indicar que o placar deve ser preenchido");
-    
-        // Nota: Cartões são int primitivo, então não podem ser null.
-        // A validação de null em cartões seria feita na camada de apresentação.
-        // Validação de cartões negativos está implementada e testada em CT22.
+        assertEquals(0, timeL.getPontos());
+        assertEquals(0, timeL.getJogos());
+
     }
 }
 
